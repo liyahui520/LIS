@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F3932A5B-1C96-42AB-848A-9883EB3C1D23}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Devices</RootNamespace>
+    <AssemblyName>Devices</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\App\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\App\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ChnCharInfo">
+      <HintPath>..\..\..\..\..\..\PMSBranch\PMSWanpi0701\ImportDLL\ChnCharInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Newtonsoft.Json.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configs\UCDevicesConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Configs\UCDevicesConfig.Designer.cs">
+      <DependentUpon>UCDevicesConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configs\UCResultConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Configs\UCResultConfig.Designer.cs">
+      <DependentUpon>UCResultConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configs\UCResultItemConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Configs\UCResultItemConfig.Designer.cs">
+      <DependentUpon>UCResultItemConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configs\UCSerialPortConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Configs\UCSerialPortConfig.Designer.cs">
+      <DependentUpon>UCSerialPortConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configs\UCDevicesCollectionConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Configs\UCDevicesCollectionConfig.Designer.cs">
+      <DependentUpon>UCDevicesCollectionConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FormDevsConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\FormDevsConfig.Designer.cs">
+      <DependentUpon>FormDevsConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FormSelectDev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\FormSelectDev.Designer.cs">
+      <DependentUpon>FormSelectDev.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDevicesInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDevicesInfo.Designer.cs">
+      <DependentUpon>UCDevicesInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDevicesState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDevicesState.Designer.cs">
+      <DependentUpon>UCDevicesState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCQueue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCQueue.Designer.cs">
+      <DependentUpon>UCQueue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DevicesBase.cs" />
+    <Compile Include="DevicesCollection.cs" />
+    <Compile Include="Devices\Fujifilm\DRI_CHEM_NX500iVC\Protocol\SeriaProtocol.cs" />
+    <Compile Include="Devices\Fujifilm\DRI_CHEM_NX700iVC\DRI_CHEM_NX700iVC.cs" />
+    <Compile Include="Devices\Fujifilm\DRI_CHEM_NX700iVC\DRI_CHEM_NX700iVCConfig.cs" />
+    <Compile Include="Devices\Fujifilm\DRI_CHEM_NX700iVC\Protocol\SeriaProtocol.cs" />
+    <Compile Include="Devices\Fujifilm\DRI_CHEM_NX700iVC\UCNX700IVCConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Devices\Fujifilm\DRI_CHEM_NX700iVC\UCNX700IVCConfig.Designer.cs">
+      <DependentUpon>UCNX700IVCConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Devices\Fujifilm\DRI_CHEM_NX500iVC\UCNX500IVCConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Devices\Fujifilm\DRI_CHEM_NX500iVC\UCNX500IVCConfig.Designer.cs">
+      <DependentUpon>UCNX500IVCConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Devices\Fujifilm\FF_6450\FF_6450Config.cs" />
+    <Compile Include="Devices\Fujifilm\FF_6450\FF_6450.cs" />
+    <Compile Include="Devices\Fujifilm\FF_6450\Protocol\SeriaProtocol.cs" />
+    <Compile Include="Devices\Fujifilm\FF_6450\UCFF_6450Config.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Devices\Fujifilm\FF_6450\UCFF_6450Config.Designer.cs">
+      <DependentUpon>UCFF_6450Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Devices\Idexx\IDEXX VetLab-Station\IDEXX_VetLab_Station.cs" />
+    <Compile Include="Devices\Idexx\IDEXX VetLab-Station\IDEXX_VetLab_StationConfig.cs" />
+    <Compile Include="Devices\Idexx\IDEXX VetLab-Station\IDEXXMessage.cs" />
+    <Compile Include="Devices\Idexx\IDEXX VetLab-Station\Protocol\SeriaProtocol.cs" />
+    <Compile Include="Devices\Idexx\IDEXX VetLab-Station\UCIDEXX_VetLab_StationConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Devices\Idexx\IDEXX VetLab-Station\UCIDEXX_VetLab_StationConfig.Designer.cs">
+      <DependentUpon>UCIDEXX_VetLab_StationConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Devices\Mindray\BC_2800\BC_2800.cs" />
+    <Compile Include="Devices\Mindray\BC_2800\BC_2800Config.cs" />
+    <Compile Include="Devices\Mindray\BC_2800\Protocol\SeriaProtocol.cs" />
+    <Compile Include="Devices\Mindray\BC_2800\UCBC_2800Config.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Devices\Mindray\BC_2800\UCBC_2800Config.Designer.cs">
+      <DependentUpon>UCBC_2800Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Command.cs" />
+    <Compile Include="Configs\Config.cs" />
+    <Compile Include="Entity\ConnectType.cs" />
+    <Compile Include="Control\DevicesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\DevicesForm.Designer.cs">
+      <DependentUpon>DevicesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configs\ResultConfig.cs" />
+    <Compile Include="Configs\ResultItemConfig.cs" />
+    <Compile Include="IDevices.cs" />
+    <Compile Include="Entity\Result.cs" />
+    <Compile Include="Entity\Information.cs" />
+    <Compile Include="Entity\DevicesState.cs" />
+    <Compile Include="Devices\Fujifilm\DRI_CHEM_NX500iVC\DRI_CHEM_NX500iVC.cs" />
+    <Compile Include="Devices\Fujifilm\DRI_CHEM_NX500iVC\DRI_CHEM_NX500iVCConfig.cs" />
+    <Compile Include="IProtocol.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tool\CH2Py.cs" />
+    <Compile Include="Tool\CSharpProvider.cs" />
+    <Compile Include="Tool\Db.cs" />
+    <Compile Include="Tool\Log.cs" />
+    <Compile Include="Tool\Web.cs" />
+    <Compile Include="Tool\Thread.cs" />
+    <Compile Include="Tool\Tool.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SerialPort\SerialPort.csproj">
+      <Project>{ff009618-13a3-4898-9627-a0b23c91b2c7}</Project>
+      <Name>SerialPort</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Configs\UCDevicesConfig.resx">
+      <DependentUpon>UCDevicesConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configs\UCResultConfig.resx">
+      <DependentUpon>UCResultConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configs\UCResultItemConfig.resx">
+      <DependentUpon>UCResultItemConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configs\UCSerialPortConfig.resx">
+      <DependentUpon>UCSerialPortConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configs\UCDevicesCollectionConfig.resx">
+      <DependentUpon>UCDevicesCollectionConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\FormDevsConfig.resx">
+      <DependentUpon>FormDevsConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\FormSelectDev.resx">
+      <DependentUpon>FormSelectDev.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDevicesInfo.resx">
+      <DependentUpon>UCDevicesInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDevicesState.resx">
+      <DependentUpon>UCDevicesState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCQueue.resx">
+      <DependentUpon>UCQueue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\DevicesForm.resx">
+      <DependentUpon>DevicesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Devices\Fujifilm\DRI_CHEM_NX700iVC\UCNX700IVCConfig.resx">
+      <DependentUpon>UCNX700IVCConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Devices\Fujifilm\DRI_CHEM_NX500iVC\UCNX500IVCConfig.resx">
+      <DependentUpon>UCNX500IVCConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Devices\Fujifilm\FF_6450\UCFF_6450Config.resx">
+      <DependentUpon>UCFF_6450Config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Devices\Idexx\IDEXX VetLab-Station\UCIDEXX_VetLab_StationConfig.resx">
+      <DependentUpon>UCIDEXX_VetLab_StationConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Devices\Mindray\BC_2800\UCBC_2800Config.resx">
+      <DependentUpon>UCBC_2800Config.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y /e  $(SolutionDir)Libs\Devices\*.*  $(TargetDir)Devices\</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
