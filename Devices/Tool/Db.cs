@@ -24,20 +24,18 @@ namespace Devices
             //将写件操作添加到队列
             thread.QueueWork(() =>
             {
-                try
-                {
                 //HttpItem hi = new HttpItem { ContentType= "application/json", Url= "http://localhost:5921/api/result", Method=HttpMethod.Post };
                 HttpItem hi = new HttpItem { ContentType = "application/json", Url = "http://140.143.203.114:80/api/result", Method = HttpMethod.Post };
                 var newresult = new { result.CMD, result.Date, result.ResultDatas, result.Devices.Info };
                 string json = JsonConvert.SerializeObject(new { resultType = 0, content = JsonConvert.SerializeObject(newresult) });
 
                 hi.Content = UTF8Encoding.UTF8.GetBytes(json);
-
+                try
+                {
                     WebLogic.GetHttpResult<string>(hi);
                 }
-                catch (System.Exception ex)
+                catch (System.Exception)
                 {
-                    System.Windows.Forms.MessageBox.Show(ex.Message+"\r\n"+ex.StackTrace);
                 }
 
             });

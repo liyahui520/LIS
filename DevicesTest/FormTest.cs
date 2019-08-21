@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevExpress.XtraReports.UI;
+using HIHS.Forms.Reports;
 using Newtonsoft.Json;
 namespace DevicesTest
 {
@@ -42,20 +44,6 @@ namespace DevicesTest
             comboBoxSex.DataSource = setTypes;
             comboBoxSex.DisplayMember = "Text";
             comboBoxSex.ValueMember = "Tag";
-
-            //Devices.UCDevicesCollectionConfig.ShowForm().Show();
-            //Devices.Control.FormSelectDev ucs = new Devices.Control.FormSelectDev();
-            //ucs.Show();
-            //if (devs == null)
-            //    return;
-            //foreach (var item in devs)
-            //{
-            //    item.AddCommand(new Devices.Command { Id = "111", Age = "1", Code = "14", KindOf = Devices.KindOfType.猫, PetId = "1", PetName = "xiaoxiao", Sex = Devices.SexType.Female, Customer = "axyaxy" });
-            //    item.AddCommand(new Devices.Command { Id = "222", Age = "3", Code = "15", KindOf = Devices.KindOfType.犬, PetId = "2", PetName = "data", Sex = Devices.SexType.Female, Customer = "axyaxy" });
-            //}
-
-            //Devices.DevicesCollection.StartAll();
-
         }
 
         void item_CommandCompleted(Devices.Command sender, Devices.Result e)
@@ -77,7 +65,12 @@ namespace DevicesTest
             }
             this.Invoke(new Action(() => { label1.Text = sb.ToString(); }));
 
-
+            LabReportA4 report = new LabReportA4(e, 123, 123);
+            report.ShowPreviewDialog();
+            ////report.OrgName = orgInfo.clinicName;
+            //ReportPrintTool tool = new ReportPrintTool(report);
+            //tool.PrintDialog();
+            ////tool.Print();
 
         }
 

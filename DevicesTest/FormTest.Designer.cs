@@ -60,11 +60,11 @@
             this.串口工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.启动所有设备ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关闭所有设备ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.结果查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button6 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxAge = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.结果查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -83,9 +83,9 @@
             // 
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(28, 138);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(514, 407);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
@@ -96,7 +96,7 @@
             this.comboBoxdevs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxdevs.FormattingEnabled = true;
             this.comboBoxdevs.Location = new System.Drawing.Point(70, 30);
-            this.comboBoxdevs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxdevs.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxdevs.Name = "comboBoxdevs";
             this.comboBoxdevs.Size = new System.Drawing.Size(312, 20);
             this.comboBoxdevs.TabIndex = 3;
@@ -114,7 +114,7 @@
             // textBoxNum
             // 
             this.textBoxNum.Location = new System.Drawing.Point(70, 53);
-            this.textBoxNum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxNum.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxNum.Name = "textBoxNum";
             this.textBoxNum.Size = new System.Drawing.Size(76, 21);
             this.textBoxNum.TabIndex = 5;
@@ -123,7 +123,7 @@
             // textBoxPI
             // 
             this.textBoxPI.Location = new System.Drawing.Point(70, 82);
-            this.textBoxPI.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxPI.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPI.Name = "textBoxPI";
             this.textBoxPI.Size = new System.Drawing.Size(76, 21);
             this.textBoxPI.TabIndex = 7;
@@ -142,7 +142,7 @@
             // textBoxPN
             // 
             this.textBoxPN.Location = new System.Drawing.Point(70, 110);
-            this.textBoxPN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxPN.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPN.Name = "textBoxPN";
             this.textBoxPN.Size = new System.Drawing.Size(76, 21);
             this.textBoxPN.TabIndex = 9;
@@ -161,7 +161,7 @@
             // textBoxCS
             // 
             this.textBoxCS.Location = new System.Drawing.Point(306, 53);
-            this.textBoxCS.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxCS.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCS.Name = "textBoxCS";
             this.textBoxCS.Size = new System.Drawing.Size(76, 21);
             this.textBoxCS.TabIndex = 11;
@@ -180,7 +180,7 @@
             // textBoxDC
             // 
             this.textBoxDC.Location = new System.Drawing.Point(306, 82);
-            this.textBoxDC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxDC.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDC.Name = "textBoxDC";
             this.textBoxDC.Size = new System.Drawing.Size(76, 21);
             this.textBoxDC.TabIndex = 13;
@@ -213,7 +213,7 @@
             this.comboBoxkindOftypes.Items.AddRange(new object[] {
             "123"});
             this.comboBoxkindOftypes.Location = new System.Drawing.Point(186, 54);
-            this.comboBoxkindOftypes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxkindOftypes.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxkindOftypes.Name = "comboBoxkindOftypes";
             this.comboBoxkindOftypes.Size = new System.Drawing.Size(76, 20);
             this.comboBoxkindOftypes.TabIndex = 15;
@@ -235,7 +235,7 @@
             this.comboBoxSex.Items.AddRange(new object[] {
             "123"});
             this.comboBoxSex.Location = new System.Drawing.Point(186, 82);
-            this.comboBoxSex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxSex.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSex.Name = "comboBoxSex";
             this.comboBoxSex.Size = new System.Drawing.Size(76, 20);
             this.comboBoxSex.TabIndex = 18;
@@ -253,7 +253,7 @@
             // textBoxWH
             // 
             this.textBoxWH.Location = new System.Drawing.Point(186, 110);
-            this.textBoxWH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxWH.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxWH.Name = "textBoxWH";
             this.textBoxWH.Size = new System.Drawing.Size(76, 21);
             this.textBoxWH.TabIndex = 20;
@@ -272,7 +272,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(398, 81);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(64, 20);
             this.button1.TabIndex = 21;
@@ -283,7 +283,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(478, 81);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(64, 20);
             this.button2.TabIndex = 22;
@@ -294,7 +294,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(398, 110);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(64, 20);
             this.button3.TabIndex = 23;
@@ -305,7 +305,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(398, 29);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(64, 20);
             this.button4.TabIndex = 24;
@@ -316,7 +316,7 @@
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(306, 110);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(76, 21);
             this.textBoxName.TabIndex = 26;
@@ -335,7 +335,7 @@
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(478, 110);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(64, 20);
             this.button5.TabIndex = 27;
@@ -369,28 +369,35 @@
             // 串口工具ToolStripMenuItem
             // 
             this.串口工具ToolStripMenuItem.Name = "串口工具ToolStripMenuItem";
-            this.串口工具ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.串口工具ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.串口工具ToolStripMenuItem.Text = "串口工具";
             this.串口工具ToolStripMenuItem.Click += new System.EventHandler(this.串口工具ToolStripMenuItem_Click);
             // 
             // 启动所有设备ToolStripMenuItem
             // 
             this.启动所有设备ToolStripMenuItem.Name = "启动所有设备ToolStripMenuItem";
-            this.启动所有设备ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.启动所有设备ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.启动所有设备ToolStripMenuItem.Text = "启动所有设备";
             this.启动所有设备ToolStripMenuItem.Click += new System.EventHandler(this.启动所有设备ToolStripMenuItem_Click);
             // 
             // 关闭所有设备ToolStripMenuItem
             // 
             this.关闭所有设备ToolStripMenuItem.Name = "关闭所有设备ToolStripMenuItem";
-            this.关闭所有设备ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.关闭所有设备ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.关闭所有设备ToolStripMenuItem.Text = "关闭所有设备";
             this.关闭所有设备ToolStripMenuItem.Click += new System.EventHandler(this.关闭所有设备ToolStripMenuItem_Click);
+            // 
+            // 结果查询ToolStripMenuItem
+            // 
+            this.结果查询ToolStripMenuItem.Name = "结果查询ToolStripMenuItem";
+            this.结果查询ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.结果查询ToolStripMenuItem.Text = "结果查询";
+            this.结果查询ToolStripMenuItem.Click += new System.EventHandler(this.结果查询ToolStripMenuItem_Click);
             // 
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(478, 29);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(64, 20);
             this.button6.TabIndex = 29;
@@ -410,7 +417,7 @@
             // textBoxAge
             // 
             this.textBoxAge.Location = new System.Drawing.Point(478, 54);
-            this.textBoxAge.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxAge.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAge.Name = "textBoxAge";
             this.textBoxAge.Size = new System.Drawing.Size(65, 21);
             this.textBoxAge.TabIndex = 32;
@@ -425,13 +432,6 @@
             this.label12.Size = new System.Drawing.Size(77, 12);
             this.label12.TabIndex = 31;
             this.label12.Text = "宠物年龄(月)";
-            // 
-            // 结果查询ToolStripMenuItem
-            // 
-            this.结果查询ToolStripMenuItem.Name = "结果查询ToolStripMenuItem";
-            this.结果查询ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.结果查询ToolStripMenuItem.Text = "结果查询";
-            this.结果查询ToolStripMenuItem.Click += new System.EventHandler(this.结果查询ToolStripMenuItem_Click);
             // 
             // FormTest
             // 
@@ -470,7 +470,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormTest";
             this.Text = "设备连接SDK测试程序";
             this.Load += new System.EventHandler(this.Form1_Load);

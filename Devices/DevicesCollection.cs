@@ -82,12 +82,20 @@ namespace Devices
             }
         }
 
+        public static event Action DevicesCountChanged
+        {
+            add { devicesCountChanged += value; }
+            remove { devicesCountChanged -= value; }
+        }
+
 
         #region 私有
         private static string path = AppDomain.CurrentDomain.BaseDirectory + "Devices\\addedDevices.xml";
         private static List<IDevices> devs;
         internal static CommandComplete commandCompleted;
         internal static Action<IDevices, DevicesState> stateChanged;
+        private static Action devicesCountChanged;
+
         /// <summary>
         /// 添加设备
         /// </summary>
@@ -100,6 +108,7 @@ namespace Devices
                 devs = new List<IDevices>();
             devs.Add(dev);
             SaveAddedDevices(devs);
+            devicesCountChanged?.Invoke();
         }
         /// <summary>
         /// 删除设备
@@ -109,6 +118,7 @@ namespace Devices
         {
             devs.Remove(dev);
             SaveAddedDevices(devs);
+            devicesCountChanged?.Invoke();
         }
         /// <summary>
         /// 获取可以添加的设备

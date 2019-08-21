@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
+
 using System.IO;
 namespace Devices
 {
@@ -22,6 +21,7 @@ namespace Devices
         private Exception err;
         private DevicesInformation info;
 
+        #region 属性
         protected IProtocol Protocol { get; set; }
         public Config Config { get; set; }
         public List<Command> CMDS
@@ -59,6 +59,10 @@ namespace Devices
             get { return err; }
             protected set { err = value; }
         }
+
+        #endregion;
+
+        #region 公有方法
 
         /// <summary>
         /// 配置文件地址
@@ -205,7 +209,13 @@ namespace Devices
         ///// </summary>
         //public virtual void Shutdown()
         //{ }
-
+        public void ResultComplete(Result result)
+        {
+            DB.Save(result);
+            log.Write("接收到数据:" + result.Source);
+            RemoveCmd(result.CMD);
+            commandComplete?.Invoke(result.CMD, result);
+        }
 
         /// <summary>
         /// 当命令完成时
@@ -222,15 +232,26 @@ namespace Devices
             }
         }
 
+        public virtual void SaveCmds()
+        {
+            Tool.ObjectSaveToXML(cmds, cmdsFile);
+        }
+
+
+        public virtual void Print(Result result)
+        {
+
+        }
+        public virtual void SaveConfig()
+        {
+            Tool.ObjectSaveToXML(Config, configFileName);
+        }
+
+        #endregion 
+
         #region 私有
 
-        public void ResultComplete(Result result)
-        {
-            DB.Save(result);
-            log.Write("接收到数据:" + result.Source);
-            RemoveCmd(result.CMD);
-            commandComplete?.Invoke(result.CMD, result);
-        }
+
         private Action<IDevices, Command> commandsChanged;
         internal event Action<IDevices, Command> CommandsChanged
         {
@@ -261,15 +282,7 @@ namespace Devices
             }
         }
 
-        public virtual void SaveCmds()
-        {
-            Tool.ObjectSaveToXML(cmds, cmdsFile);
-        }
 
-        public virtual void SaveConfig()
-        {
-            Tool.ObjectSaveToXML(Config, configFileName);
-        }
 
         /// <summary>
         /// 连接到设备并打开通信通道

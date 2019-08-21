@@ -123,7 +123,7 @@ namespace Devices.IDEXX
         }
 
         
-       public service_add service_add { get; set; }
+       public new service_add service_add { get; set; }
 
     }
 

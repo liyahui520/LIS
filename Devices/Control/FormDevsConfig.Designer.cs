@@ -39,6 +39,7 @@
             this.ucDevicesCollectionConfig1.Name = "ucDevicesCollectionConfig1";
             this.ucDevicesCollectionConfig1.Size = new System.Drawing.Size(620, 472);
             this.ucDevicesCollectionConfig1.TabIndex = 0;
+          
             // 
             // FormDevsConfig
             // 
@@ -47,7 +48,7 @@
             this.ClientSize = new System.Drawing.Size(620, 472);
             this.Controls.Add(this.ucDevicesCollectionConfig1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormDevsConfig";
             this.Text = "设备配置";
             this.ResumeLayout(false);

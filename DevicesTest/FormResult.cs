@@ -22,14 +22,11 @@ namespace DevicesTest
             HttpResult<List<string>> httpResult = WebLogic.GetHttpResult<List<string>>(new HttpItem { Url = "http://140.143.203.114:80/api/result/all", Method = HttpMethod.Get });
             if (httpResult.Success)
             {
-
                 if (httpResult.Result != null)
                 {
                     List<Result> results = httpResult.Result.Select<string, Result>(o=> JsonConvert.DeserializeObject<Result>(o)).ToList();
                     this.dataGridView1.DataSource = results;
                 }
-
-                
             }
         }
     }
