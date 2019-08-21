@@ -91,30 +91,30 @@ namespace Devices
         }
         static Tool()
         {
-            //works = new List<QueueWork>();
-            //timer = new System.Timers.Timer(1000);
-            //timer.Enabled = false;
-            //timer.Elapsed += (o, e) =>
-            //{
-            //    lock (works)
-            //    {
-            //        int length = works.Count;
-            //        for (int i = 0; i < length; )
-            //        {
-            //            works[i].Time -= 1000;
-            //            if (works[i].Time <= 0)
-            //            {
-            //                ThreadPool.QueueUserWorkItem(works[i].Callback);
-            //                works.RemoveAt(i);
-            //                length--;
-            //                continue;
-            //            }
-            //            i++;
-            //        }
-            //        if (works.Count == 0)
-            //            timer.Enabled = false;
-            //    }
-            //};
+            works = new List<QueueWork>();
+            timer = new System.Timers.Timer(1000);
+            timer.Enabled = false;
+            timer.Elapsed += (o, e) =>
+            {
+                lock (works)
+                {
+                    int length = works.Count;
+                    for (int i = 0; i < length;)
+                    {
+                        works[i].Time -= 1000;
+                        if (works[i].Time <= 0)
+                        {
+                            ThreadPool.QueueUserWorkItem(works[i].Callback);
+                            works.RemoveAt(i);
+                            length--;
+                            continue;
+                        }
+                        i++;
+                    }
+                    if (works.Count == 0)
+                        timer.Enabled = false;
+                }
+            };
         }
         private class QueueWork
         {
