@@ -4,3 +4,5 @@
 
 /.vs/Devices_2017/v15
 /SerialPort/obj/Debug
+/DevicesTest/obj/Debug
+/Print/obj/Debug
