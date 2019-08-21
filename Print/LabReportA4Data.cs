@@ -9,7 +9,7 @@ using System.Data;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace HIHS.Forms.Reports
+namespace Devices.Print
 {
     public partial class LabReportA4Data : DevExpress.XtraReports.UI.XtraReport
     {

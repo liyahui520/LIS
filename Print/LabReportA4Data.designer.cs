@@ -1,4 +1,4 @@
-﻿namespace HIHS.Forms.Reports
+﻿namespace Devices.Print
 {
     partial class LabReportA4Data
     {
@@ -46,7 +46,7 @@
             this.xrHckzfw = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrHbz = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrHjg = new DevExpress.XtraReports.UI.XRTableCell();
-            this.reportDataSet1 = new HIHS.Forms.Reports.ReportDataSet();
+            this.reportDataSet1 = new Devices.Print.ReportDataSet();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();

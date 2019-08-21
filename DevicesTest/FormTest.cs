@@ -65,12 +65,8 @@ namespace DevicesTest
             }
             this.Invoke(new Action(() => { label1.Text = sb.ToString(); }));
 
-            LabReportA4 report = new LabReportA4(e, 123, 123);
-            report.ShowPreviewDialog();
-            ////report.OrgName = orgInfo.clinicName;
-            //ReportPrintTool tool = new ReportPrintTool(report);
-            //tool.PrintDialog();
-            ////tool.Print();
+            if (e.Devices != null && e.Devices.PrintTool != null)
+                e.Devices.PrintTool.Preview(e);
 
         }
 

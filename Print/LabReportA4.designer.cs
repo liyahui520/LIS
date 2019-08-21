@@ -1,4 +1,4 @@
-﻿namespace HIHS.Forms.Reports
+﻿namespace Devices.Print
 {
     partial class LabReportA4
     {

@@ -65,6 +65,25 @@ namespace Devices
             }
         }
 
+
+        internal static T GetObjectByClass<T>(string dllName, string typeName)
+        {
+            string dll=AppDomain.CurrentDomain.BaseDirectory  + dllName;
+            if (!File.Exists(dll))
+                return default(T);
+            try
+            {
+                System.Reflection.Assembly assembly= System.Reflection.Assembly.LoadFile(dll);
+                return (T)assembly.CreateInstance(typeName);
+            }
+            catch (Exception)
+            {
+               
+            }
+            return default(T);
+        }
+
+
         internal static void QueueUserWorkItem(int wait, WaitCallback action)
         {
             works.Add(new QueueWork { Time = wait, Callback = action });
@@ -72,30 +91,30 @@ namespace Devices
         }
         static Tool()
         {
-            works = new List<QueueWork>();
-            timer = new System.Timers.Timer(1000);
-            timer.Enabled = false;
-            timer.Elapsed += (o, e) =>
-            {
-                lock (works)
-                {
-                    int length = works.Count;
-                    for (int i = 0; i < length; )
-                    {
-                        works[i].Time -= 1000;
-                        if (works[i].Time <= 0)
-                        {
-                            ThreadPool.QueueUserWorkItem(works[i].Callback);
-                            works.RemoveAt(i);
-                            length--;
-                            continue;
-                        }
-                        i++;
-                    }
-                    if (works.Count == 0)
-                        timer.Enabled = false;
-                }
-            };
+            //works = new List<QueueWork>();
+            //timer = new System.Timers.Timer(1000);
+            //timer.Enabled = false;
+            //timer.Elapsed += (o, e) =>
+            //{
+            //    lock (works)
+            //    {
+            //        int length = works.Count;
+            //        for (int i = 0; i < length; )
+            //        {
+            //            works[i].Time -= 1000;
+            //            if (works[i].Time <= 0)
+            //            {
+            //                ThreadPool.QueueUserWorkItem(works[i].Callback);
+            //                works.RemoveAt(i);
+            //                length--;
+            //                continue;
+            //            }
+            //            i++;
+            //        }
+            //        if (works.Count == 0)
+            //            timer.Enabled = false;
+            //    }
+            //};
         }
         private class QueueWork
         {

@@ -97,10 +97,6 @@ namespace Devices
         /// </summary>
         void SaveCmds();
 
-        /// <summary>
-        /// 打印结果
-        /// </summary>
-        /// <param name="result"></param>
-        void Print(Result result);
+        IPrint PrintTool { get; }
     }
 }

@@ -9,7 +9,7 @@ namespace Devices
     /// 设备
     /// </summary>
     [Serializable]
-   public  abstract class DevicesBase<T> : IDevices where T : Config
+    public abstract class DevicesBase<T> : IDevices where T : Config
     {
         protected string configFileName;
         protected Log log;
@@ -20,6 +20,8 @@ namespace Devices
         private string cmdsFile;
         private Exception err;
         private DevicesInformation info;
+        private static IPrint print;
+
 
         #region 属性
         protected IProtocol Protocol { get; set; }
@@ -60,6 +62,16 @@ namespace Devices
             protected set { err = value; }
         }
 
+
+        public virtual IPrint PrintTool
+        {
+            get
+            {
+                if (print == null)
+                    print = Tool.GetObjectByClass<IPrint>("Print.dll", "Devices.Print.UniversalPrint");
+                return print;
+            }
+        }
         #endregion;
 
         #region 公有方法
@@ -82,8 +94,8 @@ namespace Devices
 
             cmdsFile = string.Format("{0}Devices\\cmds\\{1}", AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(configFileName));
             if (!Directory.Exists(Path.GetDirectoryName(cmdsFile)))
-                    Directory.CreateDirectory(Path.GetDirectoryName(cmdsFile));
-            if(File.Exists(cmdsFile))
+                Directory.CreateDirectory(Path.GetDirectoryName(cmdsFile));
+            if (File.Exists(cmdsFile))
                 cmds = Tool.GetObjectByXML<List<Command>>(cmdsFile);
 
             log = new Log(Info.Name);
@@ -237,11 +249,6 @@ namespace Devices
             Tool.ObjectSaveToXML(cmds, cmdsFile);
         }
 
-
-        public virtual void Print(Result result)
-        {
-
-        }
         public virtual void SaveConfig()
         {
             Tool.ObjectSaveToXML(Config, configFileName);

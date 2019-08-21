@@ -6,27 +6,24 @@ using DevExpress.XtraReports.UI;
 
 using System.Collections.Generic;
 using System.IO;
+using Devices;
 
-
-namespace HIHS.Forms.Reports
+namespace Devices.Print
 {
-    public partial class LabReportA4 : DevExpress.XtraReports.UI.XtraReport
+    public partial class LabReportA4 : XtraReport
     {
-        private int orgId = 0;
-        private int reportId = 0;
+
         private Devices.Result result;
 
         private string OrgName { get; set; }
 
+        public string PrintClassName => throw new NotImplementedException();
+
         //LabResultVO entity;
 
-        public LabReportA4(Devices.Result _result, int paramOrgId, int paramReportId)
+        public LabReportA4(Devices.Result _result)
         {
             InitializeComponent();
-            this.orgId = paramOrgId;
-            this.reportId = paramReportId;
-            //this.regid = paramRegId;
-            //entity = model;
             result = _result;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;
         }
@@ -39,7 +36,7 @@ namespace HIHS.Forms.Reports
             if (result != null)
             {
                 Devices.Command cmd = result.CMD;
-                labNo.Text = orgId.ToString() + reportId.ToString();
+                //labNo.Text = orgId.ToString() + reportId.ToString();
 
                 labNo.Text = cmd.Id;
                 txtOrgName.Text = OrgName;
@@ -95,6 +92,5 @@ namespace HIHS.Forms.Reports
                 //}
             }
         }
-
     }
 }

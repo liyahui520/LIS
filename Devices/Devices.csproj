@@ -178,6 +178,7 @@
     <Compile Include="Entity\DevicesState.cs" />
     <Compile Include="Devices\Fujifilm\DRI_CHEM_NX500iVC\DRI_CHEM_NX500iVC.cs" />
     <Compile Include="Devices\Fujifilm\DRI_CHEM_NX500iVC\DRI_CHEM_NX500iVCConfig.cs" />
+    <Compile Include="IPrint.cs" />
     <Compile Include="IProtocol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tool\CH2Py.cs" />
