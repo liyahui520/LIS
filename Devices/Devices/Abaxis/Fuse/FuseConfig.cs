@@ -6,9 +6,9 @@ using System.Text;
 namespace Devices.Abaxis
 {
     [Serializable]
-    public class Vetscan_VS2Config : Config
+    public class FuseConfig : Config
     {
-       public Vetscan_VS2Config()
+       public FuseConfig()
        {
            ConnectTypes = (int)(ConnectType.HTTP);
            CurrentConnectType = ConnectType.HTTP;

@@ -9,13 +9,13 @@ using System.Windows.Forms;
 
 namespace Devices.Abaxis
 {
-    internal partial class UCVetscan_VS2Config : UCDevicesConfig
+    internal partial class UCFuseConfig : UCDevicesConfig
     {
-        public UCVetscan_VS2Config()
+        public UCFuseConfig()
         {
             InitializeComponent();
         }
-        public UCVetscan_VS2Config(Vetscan_VS2 info)
+        public UCFuseConfig(IDevices info)
             : base(info)
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace Devices.Abaxis
         protected override Config GetConfig(out int hasErrors)
         {
             Config cf= base.GetConfig(out hasErrors);
-            Vetscan_VS2Config config = (Vetscan_VS2Config)cf;
+            FuseConfig config = (FuseConfig)cf;
             config.CurrentConnectType = radioButtonTCP.Checked ? ConnectType.HTTP : ConnectType.RS_232;
             config.Address = textBoxAddress.Text.Trim().ToString();
             config.LoginPassword = textBoxPass.Text.Trim().ToString();
@@ -39,11 +39,11 @@ namespace Devices.Abaxis
 
 
 
-        private void NewUCNX500IVCConfig_Load(object sender, EventArgs e)
+        private void NewUCFuseConfig_Load(object sender, EventArgs e)
         {
             if (dev != null && dev.Config!=null)
             {
-                Vetscan_VS2Config config = (Vetscan_VS2Config)dev.Config;
+                FuseConfig config = (FuseConfig)dev.Config;
                 if (dev.Config.CurrentConnectType == ConnectType.HTTP)
                     radioButtonTCP.Checked = true;
                 textBoxAddress.Text = config.Address;

@@ -1,25 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using SerialPort;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 using System.Timers;
-
-namespace Devices.Abaxis.DRI_CHEM_NX500iVCProtocol
+using Devices.Abaxis;
+namespace Devices.Abaxis.FuseProtocol
 {
 
     // ----------   这台设备同时只能发送一个请求吗？？？？ 看你的代码貌似只能同时检查一个
     //我现在是按可以同时做多个写的代码
     public class HTTPProtocol : IProtocol
     {
-        private Vetscan_VS2 vs2;
+        private Abaxis_Fuse abaxisDevice;
         private Log log;
-        private Vetscan_VS2Config vs2config;
+        private FuseConfig fuseConfig;
         private Timer timer;
-        private string devId;
 
         public Exception Error { get; set; }
 
@@ -27,9 +24,9 @@ namespace Devices.Abaxis.DRI_CHEM_NX500iVCProtocol
         {
             timer = new Timer(10000);
             timer.Elapsed += Timer_Elapsed;
-            vs2 = (Vetscan_VS2)info;
-            log = new Log(vs2.Info.Name);
-            vs2config = (Vetscan_VS2Config)vs2.Config;
+            abaxisDevice = (Abaxis_Fuse)info;
+            log = new Log(abaxisDevice.Info.Name);
+            fuseConfig = (FuseConfig)abaxisDevice.Config;
         }
 
 
@@ -44,25 +41,34 @@ namespace Devices.Abaxis.DRI_CHEM_NX500iVCProtocol
 
         public bool Start()
         {
-            //获取当前所有设备信息
-            HttpResult<string> result = WebLogic.GetHttpResult<string>(CreateHttpItem(@"vetsync/v1/devices"));
-            if (result.Success)
+            try
             {
-                string ncResultXML = result.Result;
-                XmlDocument xml = new XmlDocument();
-                xml.LoadXml(ncResultXML);
-                XmlNode DataDictionaryUpdateInfo = xml.SelectSingleNode("Devices");
-                foreach (XmlNode node in DataDictionaryUpdateInfo.ChildNodes)
+                //获取当前所有设备信息
+                HttpResult<string> result = WebLogic.GetHttpResult<string>(CreateHttpItem(@"vetsync/v1/devices"));
+                if (result.Success)
                 {
-                    if (node["Type"] != null && node["Type"].InnerText == "VetScan VS2")
+                    string ncResultXML = result.Result;
+                    XmlDocument xml = new XmlDocument();
+                    xml.LoadXml(ncResultXML);
+                    XmlNode DataDictionaryUpdateInfo = xml.SelectSingleNode("Devices");
+                    foreach (XmlNode node in DataDictionaryUpdateInfo.ChildNodes)
                     {
-                        devId = node["Id"].InnerText;
-                        vs2.CommandsChanged += Vs2_CommandsChanged;
-                        timer.Start();
-                        return true;
+                        if (node["Type"] != null && node["Type"].InnerText == abaxisDevice.FuseCode)
+                        {
+                            abaxisDevice.FuseID = node["Id"].InnerText;
+                            abaxisDevice.CommandsChanged += Vs2_CommandsChanged;
+                            timer.Start();
+                            return true;
+                        }
                     }
                 }
             }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
             return false;
         }
 
@@ -89,8 +95,8 @@ namespace Devices.Abaxis.DRI_CHEM_NX500iVCProtocol
         {
             //------------------
             LabRequest request = new LabRequest();
-            request.DeviceID = devId;
-            request.TestCode = "HEM"; //----------这是什么?
+            request.DeviceID = abaxisDevice.FuseID;
+            request.TestCode = abaxisDevice.RequestCode;// "HEM"; //----------这是什么?
             LabRequests labRequests = new LabRequests();
             labRequests.LabRequest = new List<LabRequest>();
             labRequests.LabRequest.Add(request);
@@ -181,7 +187,7 @@ namespace Devices.Abaxis.DRI_CHEM_NX500iVCProtocol
             {
                 Devices.Result cmdResult = new Result();
                 cmdResult.CMD = cmd;
-                cmdResult.Devices = vs2;
+                cmdResult.Devices = abaxisDevice;
                 cmdResult.Date = DateTime.Now;
                 cmdResult.Source = result.Result;
 
@@ -205,7 +211,7 @@ namespace Devices.Abaxis.DRI_CHEM_NX500iVCProtocol
                     item.Max = node["HighRange"]?.InnerText;  //--------------此字段有可能为空吗?
                     cmdResult.ResultDatas.Add(item);
                 }
-                vs2.ResultComplete(cmdResult);
+                abaxisDevice.ResultComplete(cmdResult);
             }
         }
 
@@ -218,7 +224,7 @@ namespace Devices.Abaxis.DRI_CHEM_NX500iVCProtocol
         {
             //HttpItem httpItem = CreateHttpItem(@"vetsync/v1/orders/UNREQ-1708/status?rel=status");
 
-            HttpItem httpItem = CreateHttpItem(@"vetsync/v1/orders/UNREQ-1708/status?rel=status");
+            HttpItem httpItem = CreateHttpItem(string.Format(@"vetsync/v1/orders/{0}/status?rel=status",cmd.Code));
             HttpResult<string> result = WebLogic.GetHttpResult<string>(httpItem);
             if (result.Success)
             {
@@ -239,12 +245,12 @@ namespace Devices.Abaxis.DRI_CHEM_NX500iVCProtocol
         /// <param name="e"></param>
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            if (vs2.CMDS != null && vs2.CMDS.Count > 0)
+            if (abaxisDevice.CMDS != null && abaxisDevice.CMDS.Count > 0)
             {
                 Command cmd = null;
-                lock (vs2.CMDS)
+                lock (abaxisDevice.CMDS)
                 {
-                    foreach (var item in vs2.CMDS)
+                    foreach (var item in abaxisDevice.CMDS)
                     {
                         if (GetStatus(item))
                         {
@@ -263,7 +269,7 @@ namespace Devices.Abaxis.DRI_CHEM_NX500iVCProtocol
             url += apiAddress;
             List<string> headers = new List<string>();
             headers.Add("rel: devices");
-            string code = Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", vs2config.LoginName, vs2config.LoginPassword)));
+            string code = Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", fuseConfig.LoginName, fuseConfig.LoginPassword)));
             headers.Add("Authorization: " + "Basic " + code);
             return new HttpItem
             {

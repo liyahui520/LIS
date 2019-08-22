@@ -117,15 +117,17 @@
     </Compile>
     <Compile Include="DevicesBase.cs" />
     <Compile Include="DevicesCollection.cs" />
-    <Compile Include="Devices\Abaxis\Vetscan_VS2\Vetscan_VS2.cs" />
-    <Compile Include="Devices\Abaxis\Vetscan_VS2\Vetscan_VS2Config.cs" />
-    <Compile Include="Devices\Abaxis\Vetscan_VS2\Protocol\HTTPProtocol.cs" />
-    <Compile Include="Devices\Abaxis\Vetscan_VS2\UCVetscan_VS2Config.cs">
+    <Compile Include="Devices\Abaxis\Fuse\Abaxis_Fuse.cs" />
+    <Compile Include="Devices\Abaxis\Fuse\Protocol\HTTPProtocol.cs" />
+    <Compile Include="Devices\Abaxis\Fuse\UCFuseConfig.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Devices\Abaxis\Vetscan_VS2\UCVetscan_VS2Config.Designer.cs">
-      <DependentUpon>UCVetscan_VS2Config.cs</DependentUpon>
+    <Compile Include="Devices\Abaxis\Fuse\UCFuseConfig.Designer.cs">
+      <DependentUpon>UCFuseConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Devices\Abaxis\Fuse\FuseConfig.cs" />
+    <Compile Include="Devices\Abaxis\VetScan_HM5c\VetScan_HM5c.cs" />
+    <Compile Include="Devices\Abaxis\Vetscan_VS2\Vetscan_VS2.cs" />
     <Compile Include="Devices\Fujifilm\DRI_CHEM_NX500iVC\Protocol\SeriaProtocol.cs" />
     <Compile Include="Devices\Fujifilm\DRI_CHEM_NX700iVC\DRI_CHEM_NX700iVC.cs" />
     <Compile Include="Devices\Fujifilm\DRI_CHEM_NX700iVC\DRI_CHEM_NX700iVCConfig.cs" />
@@ -239,8 +241,8 @@
     <EmbeddedResource Include="Control\DevicesForm.resx">
       <DependentUpon>DevicesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Devices\Abaxis\Vetscan_VS2\UCVetscan_VS2Config.resx">
-      <DependentUpon>UCVetscan_VS2Config.cs</DependentUpon>
+    <EmbeddedResource Include="Devices\Abaxis\Fuse\UCFuseConfig.resx">
+      <DependentUpon>UCFuseConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Devices\Fujifilm\DRI_CHEM_NX700iVC\UCNX700IVCConfig.resx">
       <DependentUpon>UCNX700IVCConfig.cs</DependentUpon>
