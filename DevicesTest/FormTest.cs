@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraReports.UI;
+
 using HIHS.Forms.Reports;
 using Newtonsoft.Json;
 namespace DevicesTest

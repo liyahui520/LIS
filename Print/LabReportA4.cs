@@ -17,7 +17,7 @@ namespace Devices.Print
 
         private string OrgName { get; set; }
 
-        public string PrintClassName => throw new NotImplementedException();
+        public string PrintClassName { get; set; }
 
         //LabResultVO entity;
 
