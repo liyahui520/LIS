@@ -101,10 +101,6 @@
       <Project>{f3932a5b-1c96-42ab-848a-9883eb3c1d23}</Project>
       <Name>Devices</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Print\Print.csproj">
-      <Project>{7fbaff81-0c61-4fd2-a8e3-52739fe81a06}</Project>
-      <Name>Print</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SerialPort\SerialPort.csproj">
       <Project>{ff009618-13a3-4898-9627-a0b23c91b2c7}</Project>
       <Name>SerialPort</Name>

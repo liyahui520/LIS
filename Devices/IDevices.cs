@@ -97,6 +97,6 @@ namespace Devices
         /// </summary>
         void SaveCmds();
 
-        IPrint PrintTool { get; }
+        IPrint PrintTool { get; set; }
     }
 }

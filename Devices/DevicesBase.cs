@@ -71,6 +71,7 @@ namespace Devices
                     print = Tool.GetObjectByClass<IPrint>("Print.dll", "Devices.Print.UniversalPrint");
                 return print;
             }
+            set { print = value; }
         }
         #endregion;
 
