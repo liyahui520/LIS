@@ -160,7 +160,6 @@ namespace Devices.IDEXX.IDEXX_VetLab_StationProtocol
         }
         private void Watcher_Changed(object sender, FileSystemEventArgs e)
         {
-
             IDEXXResult idexxResult = Tool.GetObjectByXML<IDEXXResult>(e.FullPath);
             if (idexxResult == null)
                 return;
@@ -178,7 +177,7 @@ namespace Devices.IDEXX.IDEXX_VetLab_StationProtocol
 
                 Result result = new Result { CMD = cmd, Devices = idexx };
                 result.ResultDatas = new List<ResultItem>();
-                ResultConfig rc = idexxConfig.ResultConfig.LastOrDefault(o => o.InvokeFormula(cmd));
+
                 foreach (var item in idexxResult.body.result.results)
                 {
                     ResultItem ri = new ResultItem();
@@ -190,16 +189,6 @@ namespace Devices.IDEXX.IDEXX_VetLab_StationProtocol
                     ri.Unit = item.result_value_uom_cd;
                     ri.Display = item.assay_name;
                     ri.Value = item.result_value;
-                    ResultItemConfig ric = rc.Items.LastOrDefault(o => o.Code == ri.Code);
-                    if (ric != null)
-                    {
-                        ri.Name = ric.Name;
-                        ri.Display = ric.Display;
-                        ri.EnglishName = ric.EnglishName;
-                        //ri.Max = ric.Max;
-                        //ri.Min = ric.Min;
-                        //ri.Unit = ric.Unit;
-                    }
                     result.ResultDatas.Add(ri);
                 }
                 idexx.ResultComplete(result);

@@ -237,15 +237,6 @@ namespace Devices.Fujifilm.DRI_CHEM_NX700iVCProtocol
             Devices.Result result = new Result { Devices = nx700 };
             result.CMD = CMDS.LastOrDefault(o => o.Id == id);
             result.Source = inputString;
-            ResultConfig rc = null;
-            foreach (ResultConfig item in nx700.Config.ResultConfig)
-            {
-                if (item.InvokeFormula(result.CMD))
-                {
-                    rc = item;
-                    break;
-                }
-            }
 
             result.ResultDatas = new List<ResultItem>();
 
@@ -265,34 +256,9 @@ namespace Devices.Fujifilm.DRI_CHEM_NX700iVCProtocol
                 item.Name = item.Code.Trim();
                 item.Display = item.Code.Trim();
 
-                //设置显示
-                ResultItemConfig itemconfig = null;
-                if (rc != null && rc.Items != null && rc.Items.Any(o => o.Code == item.Code))
-                    itemconfig = rc.Items.First(o => o.Code == item.Code);
-                if (itemconfig != null)
-                {
-                    item.EnglishName = itemconfig.EnglishName;
-                    item.Min = itemconfig.Min;
-                    item.Max = itemconfig.Max;
-                    item.Unit = itemconfig.Unit;
-                    item.Name = itemconfig.Name;
-                    item.Display = itemconfig.Display;
-                }
                 result.ResultDatas.Add(item);
             }
 
-            if (result.ResultDatas.Count > 0 && rc != null && rc.Items.Count > 0)
-            {
-                for (int i = rc.Items.Count - 1; i >= 0; i--)
-                {
-                    ResultItem ri = result.ResultDatas.FirstOrDefault(o => o.Code == rc.Items[i].Code);
-                    if (ri != null)
-                    {
-                        result.ResultDatas.Remove(ri);
-                        result.ResultDatas.Insert(0, ri);
-                    }
-                }
-            }
 
             return result;
             #endregion

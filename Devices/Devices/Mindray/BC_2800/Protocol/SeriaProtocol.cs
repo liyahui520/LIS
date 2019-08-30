@@ -147,18 +147,6 @@ namespace Devices.Mindray.BC_2800Protocol
                 if (double.TryParse(sd, out value))
                 {
                     ResultItem ri = new ResultItem { Code = item.Code, EnglishName = item.Code, Name = item.Code, Value = value / item.Multiple, Display = item.Code };
-                    //设置显示
-                    ResultItemConfig itemconfig = null;
-                    if (rc != null && rc.Items != null && rc.Items.Any(o => o.Code == item.Code))
-                        itemconfig = rc.Items.First(o => o.Code == item.Code);
-                    if (itemconfig != null)
-                    {
-                        ri.Name = itemconfig.Name;
-                        ri.Max = itemconfig.Max;
-                        ri.Min = itemconfig.Min;
-                        ri.Display = itemconfig.Display;
-                        ri.Unit = itemconfig.Unit;
-                    }
                     result.ResultDatas.Add(ri);
                     index += item.dataLength;
                 }

@@ -222,14 +222,43 @@ namespace Devices
         ///// </summary>
         //public virtual void Shutdown()
         //{ }
+
+        /// <summary>
+        /// 接收到数据
+        /// </summary>
+        /// <param name="result"></param>
         public void ResultComplete(Result result)
         {
+            ResultIng(result);
             DB.Save(result);
             log.Write("接收到数据:" + result.Source);
             RemoveCmd(result.CMD);
             commandComplete?.Invoke(result.CMD, result);
         }
+        protected virtual void ResultIng(Result result)
+        {
+            if (Config.ResultConfig == null || Config.ResultConfig.Count == 0)
+                return;
 
+            ResultConfig rc = Config.ResultConfig.FirstOrDefault(o => o.InvokeFormula(result.CMD));
+            if (rc == null)
+                return;
+
+            for (int i = rc.Items.Count - 1; i > +0; i--)
+            {
+                ResultItem ri = result.ResultDatas.FirstOrDefault(o => o.Code == rc.Items[i].Code);
+                if (ri == null)
+                    continue;
+                ri.Max = rc.Items[i].Max;
+                ri.Min = rc.Items[i].Min;
+                ri.Name = rc.Items[i].Name;
+                ri.Display = rc.Items[i].Display;
+                ri.Unit = rc.Items[i].Unit;
+                ri.EnglishName = rc.Items[i].EnglishName;
+                result.ResultDatas.Remove(ri);
+                result.ResultDatas.Insert(0, ri);
+            }
+        }
         /// <summary>
         /// 当命令完成时
         /// </summary>
@@ -244,6 +273,8 @@ namespace Devices
                 commandComplete -= value;
             }
         }
+
+
 
         public virtual void SaveCmds()
         {
@@ -261,6 +292,7 @@ namespace Devices
 
 
         private Action<IDevices, Command> commandsChanged;
+
         internal event Action<IDevices, Command> CommandsChanged
         {
             add { commandsChanged += value; }

@@ -122,63 +122,24 @@ namespace Devices.Fujifilm.FF_6450Protocol
 
             string[] inputData = str.Split(Environment.NewLine.ToCharArray());
 
+
             string id = inputData[17].Trim();
             Devices.Result result = new Result { Devices = ff6450 };
-
             if (!CMDS.Any(o => o.Id == id))
                 result.CMD = CMDS[0];
             else
                 result.CMD = CMDS.LastOrDefault(o => o.Id == id);
-
             DateTime startDatere = DateTime.Parse(inputData[10].Trim() + "-" + inputData[11].Trim() + "-" + inputData[12].Trim() + " " + inputData[14].Trim() + ":" + inputData[15].Trim() + ":" + inputData[16].Trim());
-
             result.Source = str;
-            ResultConfig rc = null;
-            foreach (ResultConfig item in ff6450config.ResultConfig)
-            {
-                if (item.InvokeFormula(result.CMD))
-                {
-                    rc = item;
-                    break;
-                }
-            }
-
             result.ResultDatas = new List<ResultItem>();
 
             int index = 18;
             foreach (var item in dataItems)
             {
                 ResultItem ri = new ResultItem { Code = item.Code, EnglishName = item.Code, Name = item.Code, Value = inputData[index], Display = item.Code };
-                ResultItemConfig itemconfig = null;
-                if (rc != null && rc.Items != null && rc.Items.Any(o => o.Code == item.Code))
-                    itemconfig = rc.Items.First(o => o.Code == item.Code);
-                if (itemconfig != null)
-                {
-                    ri.Name = itemconfig.Name;
-                    ri.Max = itemconfig.Max;
-                    ri.Min = itemconfig.Min;
-                    ri.Display = itemconfig.Display;
-                    ri.Unit = itemconfig.Unit;
-                }
                 result.ResultDatas.Add(ri);
                 index += item.dataLength;
             }
-
-
-            if (result.ResultDatas.Count > 0 && rc != null && rc.Items.Count > 0)
-            {
-                for (int i = rc.Items.Count - 1; i >= 0; i--)
-                {
-                    ResultItem ri = result.ResultDatas.FirstOrDefault(o => o.Code == rc.Items[i].Code);
-                    if (ri != null)
-                    {
-                        result.ResultDatas.Remove(ri);
-                        result.ResultDatas.Insert(0, ri);
-                    }
-                }
-            }
-
-
             return result;
             #endregion
         }

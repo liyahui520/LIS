@@ -204,7 +204,6 @@ namespace Devices.Abaxis.FuseProtocol
                 {
                     ResultItem item = new ResultItem();
                     item.Code = node["AnalyteCode"].InnerText;
-                    item.Code = node["AnalyteCode"].InnerText;
                     item.Value = node["Result"].InnerText;
                     item.Unit = node["Units"].InnerText;
                     item.Min = node["LowRange"]?.InnerText;  // --------------此字段有可能为空吗?

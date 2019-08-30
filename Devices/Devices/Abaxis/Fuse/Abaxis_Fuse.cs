@@ -22,19 +22,8 @@ namespace Devices.Abaxis
             UCFuseConfig uc = new UCFuseConfig(this);
             return uc.ShowForm().ShowDialog();
         }
-        private static void Sost(List<ResultItemConfig> s, List<ResultItemConfig> d)
-        {
-            s.ForEach(o =>
-            {
-                int index = s.IndexOf(o);
-                ResultItemConfig ric = d.FirstOrDefault(o1 => o1.Code == o.Code);
-                if (ric != null)
-                {
-                    d.Remove(ric);
-                    d.Insert(index, ric);
-                }
-            });
-        }
+
+
 
         protected override Config DefaultConfig()
         {
@@ -117,7 +106,7 @@ namespace Devices.Abaxis
             dog1.Items.Add(new ResultItemConfig { Id = 1, Code = "ALB/GLOB", EnglishName = "ALB/GLOB", Name = "白蛋白球蛋白比", Format = "%C(%E)", Unit = "", Min = "0.7", Max = "1.9", });
             dog1.Items.Add(new ResultItemConfig { Id = 1, Code = "Anion Gap", EnglishName = "Anion Gap", Name = "阴离子间隙", Format = "%C(%E)", Unit = "mmol/L", Min = "8", Max = "16", });
             dog1.Items.Add(new ResultItemConfig { Id = 1, Code = "CRP", EnglishName = "CRP", Name = "反应蛋白", Format = "%C(%E)", Unit = "mg/dl", Min = "0", Max = "0.7", });
-            Sost(dog.Items, dog1.Items);
+
             config.ResultConfig.Add(dog1);
 
             //猫<1
@@ -155,7 +144,6 @@ namespace Devices.Abaxis
             cat.Items.Add(new ResultItemConfig { Id = 1, Code = "BUN/CRE", EnglishName = "BUN/CRE", Name = "尿素氮肌酐比", Format = "%C(%E)", Unit = "", Min = "17.5", Max = "21.9", });
             cat.Items.Add(new ResultItemConfig { Id = 1, Code = "Anion Gap", EnglishName = "Anion Gap", Name = "阴离子间隙", Format = "%C(%E)", Unit = "mmol/L", Min = "8", Max = "16", });
             cat.Items.Add(new ResultItemConfig { Id = 1, Code = "CRP", EnglishName = "CRP", Name = "反应蛋白", Format = "%C(%E)", Unit = "mg/dl", Min = "0", Max = "0", });
-            Sost(dog.Items, cat.Items);
             config.ResultConfig.Add(cat);
 
 
@@ -194,7 +182,7 @@ namespace Devices.Abaxis
             cat1.Items.Add(new ResultItemConfig { Id = 1, Code = "BUN/CRE", EnglishName = "BUN/CRE", Name = "尿素氮肌酐比", Format = "%C(%E)", Unit = "", Min = "17.5", Max = "21.9", });
             cat1.Items.Add(new ResultItemConfig { Id = 1, Code = "Anion Gap", EnglishName = "Anion Gap", Name = "阴离子间隙", Format = "%C(%E)", Unit = "mmol/L", Min = "8", Max = "16", });
             cat1.Items.Add(new ResultItemConfig { Id = 1, Code = "CRP", EnglishName = "CRP", Name = "反应蛋白", Format = "%C(%E)", Unit = "mg/dl", Min = "0", Max = "0", });
-            Sost(dog.Items, cat1.Items);
+
             config.ResultConfig.Add(cat1);
 
             //以下信息未必准确
@@ -233,7 +221,7 @@ namespace Devices.Abaxis
             rabbit.Items.Add(new ResultItemConfig { Id = 1, Code = "BUN/CRE", EnglishName = "BUN/CRE", Name = "尿素氮肌酐比", Format = "%C(%E)", Unit = "", Min = "17.5", Max = "21.9", });
             rabbit.Items.Add(new ResultItemConfig { Id = 1, Code = "Anion Gap", EnglishName = "Anion Gap", Name = "阴离子间隙", Format = "%C(%E)", Unit = "mmol/L", Min = "8", Max = "16", });
             rabbit.Items.Add(new ResultItemConfig { Id = 1, Code = "CRP", EnglishName = "CRP", Name = "反应蛋白", Format = "%C(%E)", Unit = "mg/dl", Min = "0", Max = "0", });
-            Sost(dog.Items, rabbit.Items);
+
             config.ResultConfig.Add(rabbit);
 
 
@@ -272,7 +260,6 @@ namespace Devices.Abaxis
             rabbit1.Items.Add(new ResultItemConfig { Id = 1, Code = "BUN/CRE", EnglishName = "BUN/CRE", Name = "尿素氮肌酐比", Format = "%C(%E)", Unit = "", Min = "17.5", Max = "21.9", });
             rabbit1.Items.Add(new ResultItemConfig { Id = 1, Code = "Anion Gap", EnglishName = "Anion Gap", Name = "阴离子间隙", Format = "%C(%E)", Unit = "mmol/L", Min = "8", Max = "16", });
             rabbit1.Items.Add(new ResultItemConfig { Id = 1, Code = "CRP", EnglishName = "CRP", Name = "反应蛋白", Format = "%C(%E)", Unit = "mg/dl", Min = "0", Max = "0", });
-            Sost(dog.Items, rabbit1.Items);
             config.ResultConfig.Add(rabbit1);
 
             //小鼠
@@ -310,7 +297,7 @@ namespace Devices.Abaxis
             mouse.Items.Add(new ResultItemConfig { Id = 1, Code = "BUN/CRE", EnglishName = "BUN/CRE", Name = "尿素氮肌酐比", Format = "%C(%E)", Unit = "", Min = "17.5", Max = "21.9", });
             mouse.Items.Add(new ResultItemConfig { Id = 1, Code = "Anion Gap", EnglishName = "Anion Gap", Name = "阴离子间隙", Format = "%C(%E)", Unit = "mmol/L", Min = "8", Max = "16", });
             mouse.Items.Add(new ResultItemConfig { Id = 1, Code = "CRP", EnglishName = "CRP", Name = "反应蛋白", Format = "%C(%E)", Unit = "mg/dl", Min = "0", Max = "0", });
-            Sost(dog.Items, mouse.Items);
+
             config.ResultConfig.Add(mouse);
 
             //奶牛
@@ -348,7 +335,7 @@ namespace Devices.Abaxis
             cow.Items.Add(new ResultItemConfig { Id = 1, Code = "BUN/CRE", EnglishName = "BUN/CRE", Name = "尿素氮肌酐比", Format = "%C(%E)", Unit = "", Min = "17.5", Max = "21.9", });
             cow.Items.Add(new ResultItemConfig { Id = 1, Code = "Anion Gap", EnglishName = "Anion Gap", Name = "阴离子间隙", Format = "%C(%E)", Unit = "mmol/L", Min = "8", Max = "16", });
             cow.Items.Add(new ResultItemConfig { Id = 1, Code = "CRP", EnglishName = "CRP", Name = "反应蛋白", Format = "%C(%E)", Unit = "mg/dl", Min = "0", Max = "0", });
-            Sost(dog.Items, cow.Items);
+
             config.ResultConfig.Add(cow);
 
             //马
@@ -386,7 +373,7 @@ namespace Devices.Abaxis
             horse.Items.Add(new ResultItemConfig { Id = 1, Code = "BUN/CRE", EnglishName = "BUN/CRE", Name = "尿素氮肌酐比", Format = "%C(%E)", Unit = "", Min = "17.5", Max = "21.9", });
             horse.Items.Add(new ResultItemConfig { Id = 1, Code = "Anion Gap", EnglishName = "Anion Gap", Name = "阴离子间隙", Format = "%C(%E)", Unit = "mmol/L", Min = "8", Max = "16", });
             horse.Items.Add(new ResultItemConfig { Id = 1, Code = "CRP", EnglishName = "CRP", Name = "反应蛋白", Format = "%C(%E)", Unit = "mg/dl", Min = "0", Max = "0", });
-            Sost(dog.Items, horse.Items);
+
             config.ResultConfig.Add(horse);
 
             //猪
@@ -424,7 +411,7 @@ namespace Devices.Abaxis
             pig.Items.Add(new ResultItemConfig { Id = 1, Code = "BUN/CRE", EnglishName = "BUN/CRE", Name = "尿素氮肌酐比", Format = "%C(%E)", Unit = "", Min = "17.5", Max = "21.9", });
             pig.Items.Add(new ResultItemConfig { Id = 1, Code = "Anion Gap", EnglishName = "Anion Gap", Name = "阴离子间隙", Format = "%C(%E)", Unit = "mmol/L", Min = "8", Max = "16", });
             pig.Items.Add(new ResultItemConfig { Id = 1, Code = "CRP", EnglishName = "CRP", Name = "反应蛋白", Format = "%C(%E)", Unit = "mg/dl", Min = "0", Max = "0", });
-            Sost(dog.Items, pig.Items);
+
             config.ResultConfig.Add(pig);
 
 
@@ -463,7 +450,7 @@ namespace Devices.Abaxis
             sheep.Items.Add(new ResultItemConfig { Id = 1, Code = "BUN/CRE", EnglishName = "BUN/CRE", Name = "尿素氮肌酐比", Format = "%C(%E)", Unit = "", Min = "17.5", Max = "21.9", });
             sheep.Items.Add(new ResultItemConfig { Id = 1, Code = "Anion Gap", EnglishName = "Anion Gap", Name = "阴离子间隙", Format = "%C(%E)", Unit = "mmol/L", Min = "8", Max = "16", });
             sheep.Items.Add(new ResultItemConfig { Id = 1, Code = "CRP", EnglishName = "CRP", Name = "反应蛋白", Format = "%C(%E)", Unit = "mg/dl", Min = "0", Max = "0", });
-            Sost(dog.Items, sheep.Items);
+
             config.ResultConfig.Add(sheep);
 
             return config;
