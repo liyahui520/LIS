@@ -265,7 +265,7 @@ namespace Devices.Abaxis.FuseProtocol
 
         private HttpItem CreateHttpItem(string apiAddress)
         {
-            string url = @"http://192.168.0.104:8080/";
+            string url = string.Format(@"http://{0}:8080/", fuseConfig.Address);
             url += apiAddress;
             List<string> headers = new List<string>();
             headers.Add("rel: devices");
