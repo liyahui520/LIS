@@ -98,5 +98,9 @@ namespace Devices
         void SaveCmds();
 
         IPrint PrintTool { get; set; }
+
+        DeviceType DeviceType { get; set; }
     }
+
+
 }

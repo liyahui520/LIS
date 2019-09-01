@@ -8,7 +8,18 @@ namespace Devices.Print
 {
     public class UniversalPrint : IPrint
     {
-        public string PrintClassName => "通用打印";
+       
+        private Devices.PrintInfo pinfo;
+
+        public PrintInfo PrintInfo
+        {
+            get
+            {
+                if (pinfo == null)
+                    pinfo = new PrintInfo();
+                return pinfo;
+            }
+        }
 
         public void Preview(Result result)
         {

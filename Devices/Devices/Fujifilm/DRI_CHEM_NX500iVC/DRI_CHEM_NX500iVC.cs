@@ -20,7 +20,6 @@ namespace Devices.Fujifilm
         /// <summary>
         /// 设备信息
         /// </summary>
-
         protected override  DevicesInformation DefaultInfo()
         {
             DevicesInformation info = new DevicesInformation

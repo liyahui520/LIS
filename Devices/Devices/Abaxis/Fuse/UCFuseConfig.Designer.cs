@@ -46,15 +46,15 @@
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.radioButtonRS232);
             this.panel3.Controls.Add(this.radioButtonTCP);
-            this.panel3.Size = new System.Drawing.Size(596, 243);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // radioButtonRS232
             // 
             this.radioButtonRS232.AutoSize = true;
-            this.radioButtonRS232.Location = new System.Drawing.Point(56, 17);
-            this.radioButtonRS232.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButtonRS232.Location = new System.Drawing.Point(75, 21);
+            this.radioButtonRS232.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButtonRS232.Name = "radioButtonRS232";
-            this.radioButtonRS232.Size = new System.Drawing.Size(47, 16);
+            this.radioButtonRS232.Size = new System.Drawing.Size(58, 19);
             this.radioButtonRS232.TabIndex = 2;
             this.radioButtonRS232.Text = "串口";
             this.radioButtonRS232.UseVisualStyleBackColor = true;
@@ -64,10 +64,10 @@
             // 
             this.radioButtonTCP.AutoSize = true;
             this.radioButtonTCP.Checked = true;
-            this.radioButtonTCP.Location = new System.Drawing.Point(113, 17);
-            this.radioButtonTCP.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButtonTCP.Location = new System.Drawing.Point(151, 21);
+            this.radioButtonTCP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButtonTCP.Name = "radioButtonTCP";
-            this.radioButtonTCP.Size = new System.Drawing.Size(47, 16);
+            this.radioButtonTCP.Size = new System.Drawing.Size(58, 19);
             this.radioButtonTCP.TabIndex = 4;
             this.radioButtonTCP.TabStop = true;
             this.radioButtonTCP.Text = "网口";
@@ -84,9 +84,10 @@
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.label1);
-            this.panel4.Location = new System.Drawing.Point(5, 38);
+            this.panel4.Location = new System.Drawing.Point(7, 48);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(588, 202);
+            this.panel4.Size = new System.Drawing.Size(786, 255);
             this.panel4.TabIndex = 5;
             // 
             // textBoxPass
@@ -94,9 +95,10 @@
             this.textBoxPass.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPass.Location = new System.Drawing.Point(91, 110);
+            this.textBoxPass.Location = new System.Drawing.Point(121, 138);
+            this.textBoxPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPass.Name = "textBoxPass";
-            this.textBoxPass.Size = new System.Drawing.Size(441, 21);
+            this.textBoxPass.Size = new System.Drawing.Size(589, 25);
             this.textBoxPass.TabIndex = 5;
             // 
             // textBoxName
@@ -104,9 +106,10 @@
             this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxName.Location = new System.Drawing.Point(91, 77);
+            this.textBoxName.Location = new System.Drawing.Point(121, 96);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(441, 21);
+            this.textBoxName.Size = new System.Drawing.Size(589, 25);
             this.textBoxName.TabIndex = 4;
             // 
             // textBoxAddress
@@ -114,9 +117,10 @@
             this.textBoxAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAddress.Location = new System.Drawing.Point(91, 44);
+            this.textBoxAddress.Location = new System.Drawing.Point(121, 55);
+            this.textBoxAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(441, 21);
+            this.textBoxAddress.Size = new System.Drawing.Size(589, 25);
             this.textBoxAddress.TabIndex = 3;
             // 
             // label3
@@ -125,9 +129,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 114);
+            this.label3.Location = new System.Drawing.Point(69, 142);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.Size = new System.Drawing.Size(52, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "密码：";
             // 
@@ -137,9 +142,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 81);
+            this.label2.Location = new System.Drawing.Point(53, 101);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.Size = new System.Drawing.Size(67, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "登录名：";
             // 
@@ -149,17 +155,19 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 48);
+            this.label1.Location = new System.Drawing.Point(37, 60);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.Size = new System.Drawing.Size(84, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Fuse地址：";
             // 
-            // UCVetscan_VS2Config
+            // UCFuseConfig
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "UCVetscan_VS2Config";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "UCFuseConfig";
             this.Load += new System.EventHandler(this.NewUCFuseConfig_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

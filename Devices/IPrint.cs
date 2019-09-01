@@ -13,6 +13,10 @@ namespace Devices
 
         void Print(Result result,string PrinterName);
         
-        String PrintClassName { get; }
+
+        PrintInfo PrintInfo { get;}
     }
+
+
+
 }

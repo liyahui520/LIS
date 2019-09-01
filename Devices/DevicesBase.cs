@@ -21,6 +21,7 @@ namespace Devices
         private Exception err;
         private DevicesInformation info;
         private static IPrint print;
+        private DeviceType type = DeviceType.MaxAndMin;
 
 
         #region 属性
@@ -68,7 +69,12 @@ namespace Devices
             get
             {
                 if (print == null)
-                    print = Tool.GetObjectByClass<IPrint>("Print.dll", "Devices.Print.UniversalPrint");
+                {
+                    PrintInfo pinfo = new PrintInfo();
+                    IPrint defaultPrint = Tool.GetObjectByClass<IPrint>(pinfo.Dll, pinfo.ClassName);
+                    if (defaultPrint != null)
+                        print = defaultPrint;
+                }
                 return print;
             }
             set { print = value; }
@@ -77,10 +83,27 @@ namespace Devices
 
         #region 公有方法
 
+
+
+
+
         /// <summary>
         /// 配置文件地址
         /// </summary>
         public string ConfigFileName { get { return configFileName; } }
+
+        public DeviceType DeviceType
+        {
+            get
+            {
+                return type;
+            }
+
+            set
+            {
+                type = value;
+            }
+        }
 
         public DevicesBase(string _cgFile)
         {

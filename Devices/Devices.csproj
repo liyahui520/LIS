@@ -183,6 +183,8 @@
     </Compile>
     <Compile Include="Configs\ResultConfig.cs" />
     <Compile Include="Configs\ResultItemConfig.cs" />
+    <Compile Include="Entity\DeviceType.cs" />
+    <Compile Include="Entity\PrintInfo.cs" />
     <Compile Include="IDevices.cs" />
     <Compile Include="Entity\Result.cs" />
     <Compile Include="Entity\Information.cs" />
