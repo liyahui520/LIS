@@ -9,15 +9,15 @@ namespace Devices
     [Serializable]
     public class PrintInfo
     {
-        private string dll = "";
-        private string className = "";
+
         public PrintInfo()
         {
             Author = "咸菜";
             Name = "基础打印";
             Describe = "基础打印";
             Dll = "Print.dll";
-            className = "Devices.Print.UniversalPrint";
+            ClassName = "Devices.Print.UniversalPrint";
+            UsableDeviceType = DeviceType.MaxAndMin;
         }
 
         public string Author { get; set; }
@@ -37,6 +37,8 @@ namespace Devices
             get;
             set;
         }
+
+        public DeviceType UsableDeviceType { get; set; }
 
     }
 }
