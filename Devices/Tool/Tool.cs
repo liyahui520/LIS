@@ -76,9 +76,9 @@ namespace Devices
                 System.Reflection.Assembly assembly= System.Reflection.Assembly.LoadFile(dll);
                 return (T)assembly.CreateInstance(typeName);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-               
+              
             }
             return default(T);
         }

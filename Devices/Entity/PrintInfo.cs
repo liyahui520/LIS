@@ -18,6 +18,7 @@ namespace Devices
             Dll = "Print.dll";
             ClassName = "Devices.Print.UniversalPrint";
             UsableDeviceType = DeviceType.MaxAndMin;
+            Images = new List<string> { "print.jpg" };
         }
 
         public string Author { get; set; }
@@ -39,6 +40,8 @@ namespace Devices
         }
 
         public DeviceType UsableDeviceType { get; set; }
+
+        public List<string> Images{ get; set; }
 
     }
 }
