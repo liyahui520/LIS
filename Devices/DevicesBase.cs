@@ -68,13 +68,13 @@ namespace Devices
         {
             get
             {
-                if (print == null)
-                {
-                    PrintInfo pinfo = new PrintInfo();
-                    IPrint defaultPrint = Tool.GetObjectByClass<IPrint>(pinfo.Dll, pinfo.ClassName);
-                    if (defaultPrint != null)
-                        print = defaultPrint;
-                }
+                //if (print == null)
+                //{
+                //    PrintInfo pinfo = new PrintInfo();
+                //    IPrint defaultPrint = Tool.GetObjectByClass<IPrint>(pinfo.Dll, pinfo.ClassName);
+                //    if (defaultPrint != null)
+                //        print = defaultPrint;
+                //}
                 return print;
             }
             set { print = value; }
