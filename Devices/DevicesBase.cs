@@ -22,7 +22,7 @@ namespace Devices
         private DevicesInformation info;
         private static IPrint print;
         private DeviceType type = DeviceType.MaxAndMin;
-
+        private static string basePath = AppDomain.CurrentDomain.BaseDirectory;
 
         #region 属性
         protected IProtocol Protocol { get; set; }
@@ -68,13 +68,13 @@ namespace Devices
         {
             get
             {
-                if (print == null)
-                {
-                    PrintInfo pinfo = new PrintInfo();
-                    IPrint defaultPrint = Tool.GetObjectByClass<IPrint>(pinfo.Dll, pinfo.ClassName);
-                    if (defaultPrint != null)
-                        print = defaultPrint;
-                }
+                //if (print == null)
+                //{
+                //    PrintInfo pinfo = new PrintInfo();
+                //    IPrint defaultPrint = Tool.GetObjectByClass<IPrint>(pinfo.Dll, pinfo.ClassName);
+                //    if (defaultPrint != null)
+                //        print = defaultPrint;
+                //}
                 return print;
             }
             set { print = value; }
@@ -109,18 +109,18 @@ namespace Devices
         {
             configFileName = _cgFile;
             if (string.IsNullOrEmpty(configFileName))
-                configFileName = string.Format("{0}Devices\\{1}\\{2}.xml", AppDomain.CurrentDomain.BaseDirectory, Info.Brand, DateTime.Now.ToString("yyyyMMddHHmmss"));
-            if (!string.IsNullOrEmpty(ConfigFileName) && System.IO.File.Exists(configFileName))
-                Config = Tool.GetObjectByXML<T>(configFileName);
+                configFileName = string.Format("Devices\\{0}\\{1}.xml", Info.Brand, DateTime.Now.ToString("yyyyMMddHHmmss"));
+            if (!string.IsNullOrEmpty(ConfigFileName) && System.IO.File.Exists(basePath + configFileName))
+                Config = Tool.GetObjectByXML<T>(basePath + configFileName);
             else
                 Config = DefaultConfig();
 
 
-            cmdsFile = string.Format("{0}Devices\\cmds\\{1}", AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(configFileName));
-            if (!Directory.Exists(Path.GetDirectoryName(cmdsFile)))
-                Directory.CreateDirectory(Path.GetDirectoryName(cmdsFile));
-            if (File.Exists(cmdsFile))
-                cmds = Tool.GetObjectByXML<List<Command>>(cmdsFile);
+            cmdsFile = string.Format("Devices\\cmds\\{0}", Path.GetFileName(configFileName));
+            if (!Directory.Exists(Path.GetDirectoryName(basePath + cmdsFile)))
+                Directory.CreateDirectory(Path.GetDirectoryName(basePath + cmdsFile));
+            if (File.Exists(basePath + cmdsFile))
+                cmds = Tool.GetObjectByXML<List<Command>>(basePath + cmdsFile);
 
             log = new Log(Info.Name);
         }
@@ -301,12 +301,12 @@ namespace Devices
 
         public virtual void SaveCmds()
         {
-            Tool.ObjectSaveToXML(cmds, cmdsFile);
+            Tool.ObjectSaveToXML(cmds, basePath + cmdsFile);
         }
 
         public virtual void SaveConfig()
         {
-            Tool.ObjectSaveToXML(Config, configFileName);
+            Tool.ObjectSaveToXML(Config,  basePath+configFileName);
         }
 
         #endregion 

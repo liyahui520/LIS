@@ -81,12 +81,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Devices\Devices.csproj">
-      <Project>{f3932a5b-1c96-42ab-848a-9883eb3c1d23}</Project>
-      <Name>Devices</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="ReportDataSet.xsc">
       <DependentUpon>ReportDataSet.xsd</DependentUpon>
     </None>
@@ -98,6 +92,12 @@
     <None Include="ReportDataSet.xss">
       <DependentUpon>ReportDataSet.xsd</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Devices\Devices.csproj">
+      <Project>{f3932a5b-1c96-42ab-848a-9883eb3c1d23}</Project>
+      <Name>Devices</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
