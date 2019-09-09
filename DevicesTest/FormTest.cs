@@ -81,6 +81,7 @@ namespace DevicesTest
             cmd.Customer = this.textBoxCS.Text;
             cmd.Date = DateTime.Now;
             cmd.Doctor = this.textBoxDC.Text;
+            cmd.DoctorId = "001";
             cmd.Age = this.textBoxAge.Text;
             cmd.KindOf = (Devices.KindOfType)comboBoxkindOftypes.SelectedValue;
             cmd.Gender = (Devices.GenderType)comboBoxSex.SelectedValue;

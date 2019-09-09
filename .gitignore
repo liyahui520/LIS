@@ -7,3 +7,8 @@
 /DevicesTest/obj/Debug
 /Print/obj/Debug
 /Devices/obj/Debug
+/.vs/Devices/v15
+/Devices/obj/Release
+/DevicesTest/obj/Release
+/Print/obj/Release
+/SerialPort/obj/Release

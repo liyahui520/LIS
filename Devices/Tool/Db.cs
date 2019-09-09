@@ -27,7 +27,16 @@ namespace Devices
                 //HttpItem hi = new HttpItem { ContentType= "application/json", Url= "http://localhost:5921/api/result", Method=HttpMethod.Post };
                 HttpItem hi = new HttpItem { ContentType = "application/json", Url = "http://140.143.203.114:80/api/result", Method = HttpMethod.Post };
                 var newresult = new { result.CMD, result.Date, result.ResultDatas, result.Devices.Info };
-                string json = JsonConvert.SerializeObject(new { resultType = 0, content = JsonConvert.SerializeObject(newresult) });
+                string json = JsonConvert.SerializeObject(new
+                {
+                    OrgCode =1,
+                    DoctorCode =result.CMD.DoctorId,
+                    DeviceCode = result.Devices.Info.Code,
+                    PetCode=result.CMD.PetId,
+                    CreateTime=result.Date,
+                    ResultType = 0,
+                    Content = JsonConvert.SerializeObject(newresult)
+                });
 
                 hi.Content = UTF8Encoding.UTF8.GetBytes(json);
                 try
@@ -37,7 +46,6 @@ namespace Devices
                 catch (System.Exception)
                 {
                 }
-
             });
         }
 
