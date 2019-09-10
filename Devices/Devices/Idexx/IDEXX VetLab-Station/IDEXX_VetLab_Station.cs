@@ -20,7 +20,7 @@ namespace Devices.IDEXX
 
         public override System.Windows.Forms.DialogResult ShowConfigForm()
         {
-            UCDRI_CHEM_NX500iVCConfig uc = new UCDRI_CHEM_NX500iVCConfig(this);
+            UCIDEXX_VetLab_StationConfig uc = new UCIDEXX_VetLab_StationConfig(this);
             return uc.ShowForm().ShowDialog();
         }
 
@@ -47,7 +47,7 @@ namespace Devices.IDEXX
                 Model = "IDEXX VetLab-Station",
                 Name = "IDEXX 工作站",
                 Remarks = "IDEXX 工作站",
-                Code = "IDEXX VetLab-Station",
+                Code = "IDEXX_VetLab_Station",
                 Url = "https://www.idexx.de/de/veterinary/analyzers/idexx-vet-lab-station/",
                 ImagePath = "vetlab-station.jpg",
             };

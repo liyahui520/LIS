@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace Devices.IDEXX
 {
-    internal partial class UCDRI_CHEM_NX500iVCConfig : UCDevicesConfig
+    internal partial class UCIDEXX_VetLab_StationConfig : UCDevicesConfig
     {
         IDEXX_VetLab_Station idexxInfo;
-        public UCDRI_CHEM_NX500iVCConfig()
+        public UCIDEXX_VetLab_StationConfig()
         {
             InitializeComponent();
         }
-        public UCDRI_CHEM_NX500iVCConfig(IDEXX_VetLab_Station info)
+        public UCIDEXX_VetLab_StationConfig(IDEXX_VetLab_Station info)
             : base(info)
         {
             InitializeComponent();

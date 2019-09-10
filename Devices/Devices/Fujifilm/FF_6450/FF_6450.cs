@@ -24,7 +24,7 @@ namespace Devices.Fujifilm
                 Model = "FUJI FF-6450",
                 Name = "全自动血细胞分析仪 FF-6450",
                 Remarks = "富士全自动血细胞分析仪",
-                Code = "FUJI FF-6450",
+                Code = "FUJI_FF_6450",
                 Url = "http://www.fujifilm.com.cn/products/medical/dri_chem/ff6450/",
                 ImagePath = "ff_6450.png",
             };

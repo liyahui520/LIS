@@ -1,6 +1,6 @@
 ﻿namespace Devices.IDEXX
 {
-    partial class UCDRI_CHEM_NX500iVCConfig
+    partial class UCIDEXX_VetLab_StationConfig
     {
         /// <summary> 
         /// 必需的设计器变量。
