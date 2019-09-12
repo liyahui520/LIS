@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using ControlsTool.Model;
 namespace Devices
 {
     public partial class UCDevicesCollectionConfig : UserControl
@@ -35,10 +35,24 @@ namespace Devices
             SetListViewDateSet(addedDevs);
 
             devs = Devices.DevicesCollection.GetCanAddDevices();
-            var list = devs.Select<DevicesInformation, dynamic>(o => new { Text = o.Name, Tag = o }).ToList();
-            comboBox1.DataSource = list;
-            comboBox1.DisplayMember = "Text";
-            comboBox1.ValueMember = "Tag";
+
+            //var list = devs.Select<DevicesInformation, dynamic>(o => new { Text = o.Name, Tag = o }).ToList();
+            //comboBox1.DataSource = list;
+            //comboBox1.DisplayMember = "Text";
+            //comboBox1.ValueMember = "Tag";
+
+            List<TreeValue> tree = new List<TreeValue>();
+            devs.ForEach(d=> {
+                TreeValue node = tree.FirstOrDefault(n=>n.Display==d.Brand);
+                if (node == null)
+                    tree.Add(node = new TreeValue { Display = d.Brand, Nodes = new List<TreeValue>() });
+                node.Nodes.Add(new TreeValue { Display = d.Name, Value = d });
+            });
+
+
+            treeComboBox1.DisplayMember = "Display";
+            treeComboBox1.NodesMember = "Nodes";
+            this.treeComboBox1.DataSource = tree;
         }
 
         private void ListViewAddItem(IDevices item)
@@ -65,7 +79,9 @@ namespace Devices
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            DevicesInformation info = comboBox1.SelectedValue as DevicesInformation;
+            //DevicesInformation info = comboBox1.SelectedValue as DevicesInformation;
+            TreeValue tree= this.treeComboBox1.SelectedItem as TreeValue;
+            DevicesInformation info = tree?.Value as DevicesInformation;
             if (info == null)
                 return;
             IDevices newDev = Devices.DevicesCollection.CreateDevices(null, info.ClassInfo);

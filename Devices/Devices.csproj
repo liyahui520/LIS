@@ -37,6 +37,9 @@
     <Reference Include="ChnCharInfo">
       <HintPath>..\Libs\ChnCharInfo.dll</HintPath>
     </Reference>
+    <Reference Include="ControlsTool">
+      <HintPath>..\..\..\Tool\ControlsTool\ControlsTool\bin\Release\ControlsTool.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\Newtonsoft.Json.dll</HintPath>
