@@ -43,7 +43,7 @@ namespace Devices
                 {
                     WebLogic.GetHttpResult<string>(hi);
                 }
-                catch (System.Exception)
+                catch (System.Exception ex)
                 {
                 }
             });
