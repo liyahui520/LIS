@@ -11,7 +11,7 @@ namespace Devices.Print
     {
         public static double GetNum(this string str)
         {
-            if (string.IsNullOrEmpty(str.Trim()))
+            if (string.IsNullOrEmpty(str) || string.IsNullOrEmpty(str.Trim()))
                 return 0;
             string newstr = Regex.Replace(str, @"[^\d.\d]", "");
             double num = 0;

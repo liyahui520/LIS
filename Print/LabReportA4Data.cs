@@ -19,33 +19,35 @@ namespace Devices.Print
             if (result.ResultDatas != null && result.ResultDatas.Count > 0)
             {
                 int range = 0;
+
                 foreach (Devices.ResultItem item in result.ResultDatas)
                 {
                     DataRow newrow = reportDataSet1.TestingResults.NewRow();
                     var reg = new Regex(@"-?\d+(\.\d+)?");
-                    string resultValue = item.Value.ToString().GetNum().ToString();
+                    double? resultValue = item.Value?.ToString().GetNum();
                     float r = 0;
                     float.TryParse(item.Value.ToString(), out r);
                     newrow["ID"] = item.Code;
-                    newrow["Image"] = BitmapTobytes(GetImg(resultValue, Convert.ToInt32(item.Max.ToString().GetNum()), Convert.ToInt32(item.Min.ToString().GetNum()), out range));
+                    newrow["Image"] = BitmapTobytes(GetImg(resultValue?.ToString(), Convert.ToInt32(item.Max.GetNum()), Convert.ToInt32(item.Min.GetNum()), out range));
                     newrow["IntRange"] = range;
                     newrow["ItemName"] = item.Display;
-                    newrow["ResultValue"] = item.Value.ToString().GetNum();
+                    newrow["ResultValue"] = resultValue;
                     newrow["ResultSymbol"] = item.Code;
-                    newrow["Max"] = item.Max == null ? 0 : Convert.ToInt32(item.Max.ToString().GetNum());
+                    newrow["Max"] = item.Max == null ? 0 : Convert.ToInt32(item.Max.GetNum());
                     //newrow["Range"] = TextImg(result, range);
-                    newrow["Min"] = item.Min == null ? 0 : Convert.ToInt32(item.Min.ToString().GetNum());
+                    newrow["Min"] = item.Min == null ? 0 : Convert.ToInt32(item.Min.GetNum());
                     newrow["Unit"] = item.Unit;
-                    newrow["RangeText"] = GetRangeText(item.Max.ToString().GetNum(), item.Min.ToString().GetNum());
+                    newrow["RangeText"] = GetRangeText(item.Max.GetNum(), item.Min.GetNum());
                     //newrow["Remark"] =item.Name;
                     reportDataSet1.TestingResults.Rows.Add(newrow);
                 }
+
+
+
             }
         }
 
-        #region 5期弃用-by hzhao
 
-        #endregion
 
         private Bitmap GetImg(string value, decimal max, decimal min, out int range)
         {
@@ -114,7 +116,7 @@ namespace Devices.Print
                 return null;
             MemoryStream ms = new MemoryStream();
             b.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-            byte[] bytes = ms.GetBuffer();  //byte[]   bytes=   ms.ToArray(); 这两句都可以，至于区别么，下面有解释
+            byte[] bytes = ms.GetBuffer();
             ms.Close();
             return bytes;
         }

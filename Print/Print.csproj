@@ -79,6 +79,7 @@
     <EmbeddedResource Include="LabReportA4Data.resx">
       <DependentUpon>LabReportA4Data.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ReportDataSet.xsc">
