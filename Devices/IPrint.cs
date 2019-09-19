@@ -7,12 +7,12 @@ namespace Devices
 {
     public interface IPrint
     {
-        void Print(Result result);
+        void Print(List<Result> result);
 
-        void Preview(Result result);
+        void Preview(List<Result> result);
 
-        void Print(Result result,string PrinterName);
-        
+        void Print(List<Result> result,string PrinterName);
+        void Preview(List<Result> result,string PrinterName);
 
         PrintInfo PrintInfo { get;}
     }
