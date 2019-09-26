@@ -43,5 +43,7 @@ namespace Devices
 
         public List<string> Images{ get; set; }
 
+        public object Tag { get; set; }
+
     }
 }
