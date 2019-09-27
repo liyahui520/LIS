@@ -53,6 +53,8 @@ namespace Devices
             treeComboBox1.DisplayMember = "Display";
             treeComboBox1.NodesMember = "Nodes";
             this.treeComboBox1.DataSource = tree;
+
+            this.treeComboBox1.SelectedIndex = 0;
         }
 
         private void ListViewAddItem(IDevices item)
