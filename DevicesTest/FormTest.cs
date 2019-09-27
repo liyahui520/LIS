@@ -63,10 +63,6 @@ namespace DevicesTest
                 sb.Append("\r\n");
             }
             this.Invoke(new Action(() => { label1.Text = sb.ToString(); }));
-
-            if (e.Devices != null && e.Devices.PrintTool != null)
-                e.Devices.PrintTool.Preview(e);
-
         }
 
         private void button1_Click(object sender, EventArgs e)
