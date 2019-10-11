@@ -4,15 +4,18 @@ using System.Linq;
 using System.Text;
 using System.IO.Ports;
 
-namespace Devices.Fujifilm
+using Devices.Fujifilm;
+using System.Windows.Forms;
+
+namespace Devices.Mnchip
 {
-    public class FF_6450 : DevicesBase<FF_6450Config>
+    public class DRI_CHEM_IMMUNO_AU10V : DevicesBase<FF_6450Config>
     {
-        public FF_6450(string fileName)
+        public DRI_CHEM_IMMUNO_AU10V(string fileName)
             : base(fileName)
         {
-            Protocol = new FF_6450Protocol.SeriaProtocol();
-            Protocol.Init(this);
+            //Protocol =null;
+            //Protocol.Init(this);
         }
 
         protected override DevicesInformation DefaultInfo()
@@ -21,21 +24,20 @@ namespace Devices.Fujifilm
             {
                 Num = 5,
                 Brand = "富士(fujifilm)",
-                Model = "FUJI FF-6450",
-                Name = "全自动血细胞分析仪 FF-6450",
+                Model = "IMMUNO_AU10V",
+                Name = "全自动内分泌分析仪IMMUNO AU10V DRI-CHEM",
                 Remarks = "富士全自动血细胞分析仪",
-                Code = "FUJI_FF_6450",
-                Url = "http://www.fujifilm.com.cn/products/medical/dri_chem/ff6450/",
-                ImagePath = "ff_6450.png",
+                Code = "FUJI_IMMUNO_AU10V",
+                Url = "http://www.fujifilm.com.cn/products/medical/animal/immuno_au10v/",
             };
+            info.ImagePath = info.Code + ".jpg";
             return info;
         }
-
-        public override System.Windows.Forms.DialogResult ShowConfigForm()
+        public override DialogResult ShowConfigForm()
         {
-            UCFF_6450Config uc = new UCFF_6450Config(this);
-            return uc.ShowForm().ShowDialog();
+            return DialogResult.OK;
         }
+
         protected override Config DefaultConfig()
         {
             FF_6450Config config = new FF_6450Config();
@@ -183,5 +185,7 @@ namespace Devices.Fujifilm
             config.ResultConfig.Add(horse);
             return config;
         }
+
+
     }
 }

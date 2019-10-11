@@ -4,38 +4,40 @@ using System.Linq;
 using System.Text;
 using System.IO.Ports;
 
-namespace Devices.Fujifilm
+using Devices.Fujifilm;
+using System.Windows.Forms;
+
+namespace Devices.Huisong
 {
-    public class FF_6450 : DevicesBase<FF_6450Config>
+    public class QR_200 : DevicesBase<FF_6450Config>
     {
-        public FF_6450(string fileName)
+        public QR_200(string fileName)
             : base(fileName)
         {
-            Protocol = new FF_6450Protocol.SeriaProtocol();
-            Protocol.Init(this);
+            //Protocol =null;
+            //Protocol.Init(this);
         }
 
         protected override DevicesInformation DefaultInfo()
         {
             DevicesInformation info = new DevicesInformation
             {
-                Num = 5,
-                Brand = "富士(fujifilm)",
-                Model = "FUJI FF-6450",
-                Name = "全自动血细胞分析仪 FF-6450",
-                Remarks = "富士全自动血细胞分析仪",
-                Code = "FUJI_FF_6450",
-                Url = "http://www.fujifilm.com.cn/products/medical/dri_chem/ff6450/",
-                ImagePath = "ff_6450.png",
+                Num =21,
+                Brand = "汇松(Huisong)",
+                Model = "QR-200",
+                Name = "特定蛋白分析仪 QR-200",
+                Remarks = "特定蛋白分析仪QR-200",
+                Code = "Huisong_QR-200",
+                Url = "http://www.huisong.com/ProductDetail/2896589.html",
             };
+            info.ImagePath = info.Code + ".jpg";
             return info;
         }
-
-        public override System.Windows.Forms.DialogResult ShowConfigForm()
+        public override DialogResult ShowConfigForm()
         {
-            UCFF_6450Config uc = new UCFF_6450Config(this);
-            return uc.ShowForm().ShowDialog();
+            return DialogResult.OK;
         }
+
         protected override Config DefaultConfig()
         {
             FF_6450Config config = new FF_6450Config();
@@ -183,5 +185,7 @@ namespace Devices.Fujifilm
             config.ResultConfig.Add(horse);
             return config;
         }
+
+
     }
 }

@@ -6,13 +6,13 @@ using System.IO.Ports;
 namespace Devices.Mindray
 {
     [Serializable]
-    public class BC_2800 : DevicesBase<BC_2800Config>
+    public class BC_5150 : DevicesBase<BC_2800Config>
     {
-        public BC_2800(string fileName)
+        public BC_5150(string fileName)
             : base(fileName)
         {
-            Protocol = new BC_2800Protocol.SeriaProtocol();
-            Protocol.Init(this);
+            //Protocol = new BC_2800Protocol.SeriaProtocol();
+            //Protocol.Init(this);
         }
 
         /// <summary>
@@ -24,11 +24,11 @@ namespace Devices.Mindray
             {
                 Num = 2,
                 Brand = "迈瑞(Mindray)",
-                Model = "BC-2800",
-                Name = "Mindray 三分群血液细胞分析仪 BC-2800",
-                Remarks = "Mindray 血液细胞分析仪",
-                Code = "Mindray 三分群血液细胞分析仪 BC-2800",
-                Url = "http://www.mindray.com/cn/product/ba17524d-5c96-4fda-bb50-33a599e68460.html",
+                Model = "BC-5150",
+                Name = "Mindray 五分类血液细胞分析仪 BC-5150",
+                Remarks = "Mindray 五分类血液细胞分析仪 BC-5150",
+                Code = "Mindray 五分类血液细胞分析仪 BC-5150",
+                Url = "https://www.mindray.com/cn/product/BC-5150.html",
                 ImagePath = "BC_2800.png",
             };
             return info;
@@ -36,8 +36,7 @@ namespace Devices.Mindray
 
         public override System.Windows.Forms.DialogResult ShowConfigForm()
         {
-            UCBC_2800Config uc = new UCBC_2800Config(this);
-            return uc.ShowForm().ShowDialog();
+            return System.Windows.Forms.DialogResult.OK;
         }
 
         protected override Config DefaultConfig()

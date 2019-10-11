@@ -27,7 +27,7 @@ namespace Devices.Abaxis
             DevicesInformation info = new DevicesInformation
             {
                 Num = 7,
-                Brand = "Abaxis",
+                Brand = "爱倍思(Abaxis)",
                 Model = "Abaxis VetScan HM5c",
                 Name = "爱倍思 HM5c血常规",
                 Remarks = "爱倍思 HM5c血常规",
