@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ChnCharInfo">
@@ -131,6 +133,9 @@
     <Compile Include="Devices\Abaxis\Fuse\FuseConfig.cs" />
     <Compile Include="Devices\Abaxis\VetScan_HM5c\VetScan_HM5c.cs" />
     <Compile Include="Devices\Abaxis\Vetscan_VS2\Vetscan_VS2.cs" />
+    <Compile Include="Devices\Arkray\SP_4010\SP_4010.cs" />
+    <Compile Include="Devices\Arkray\SP_4430\SP_4430.cs" />
+    <Compile Include="Devices\Fujifilm\DRI_CHEM_IMMUNO_AU10V\IMMUNO_AU10V.cs" />
     <Compile Include="Devices\Fujifilm\DRI_CHEM_NX500iVC\Protocol\SeriaProtocol.cs" />
     <Compile Include="Devices\Fujifilm\DRI_CHEM_NX700iVC\DRI_CHEM_NX700iVC.cs" />
     <Compile Include="Devices\Fujifilm\DRI_CHEM_NX700iVC\DRI_CHEM_NX700iVCConfig.cs" />
@@ -156,6 +161,8 @@
     <Compile Include="Devices\Fujifilm\FF_6450\UCFF_6450Config.Designer.cs">
       <DependentUpon>UCFF_6450Config.cs</DependentUpon>
     </Compile>
+    <Compile Include="Devices\Huisong\QR_200\QR_200.cs" />
+    <Compile Include="Devices\Huisong\QR_1000\QR_1000.cs" />
     <Compile Include="Devices\Idexx\IDEXX VetLab-Station\IDEXX_VetLab_Station.cs" />
     <Compile Include="Devices\Idexx\IDEXX VetLab-Station\IDEXX_VetLab_StationConfig.cs" />
     <Compile Include="Devices\Idexx\IDEXX VetLab-Station\IDEXXMessage.cs" />
@@ -166,6 +173,7 @@
     <Compile Include="Devices\Idexx\IDEXX VetLab-Station\UCIDEXX_VetLab_StationConfig.Designer.cs">
       <DependentUpon>UCIDEXX_VetLab_StationConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Devices\Mindray\BC_5150\BC_5150.cs" />
     <Compile Include="Devices\Mindray\BC_2800\BC_2800.cs" />
     <Compile Include="Devices\Mindray\BC_2800\BC_2800Config.cs" />
     <Compile Include="Devices\Mindray\BC_2800\Protocol\SeriaProtocol.cs" />
@@ -175,6 +183,9 @@
     <Compile Include="Devices\Mindray\BC_2800\UCBC_2800Config.Designer.cs">
       <DependentUpon>UCBC_2800Config.cs</DependentUpon>
     </Compile>
+    <Compile Include="Devices\Mnchip\Celercare_VH3\Celercare_VH3.cs" />
+    <Compile Include="Devices\Mnchip\Pointcare_V3\Pointcare_V3.cs" />
+    <Compile Include="Devices\Mnchip\Pointcare_V2\Pointcare_V2.cs" />
     <Compile Include="Entity\Command.cs" />
     <Compile Include="Configs\Config.cs" />
     <Compile Include="Entity\ConnectType.cs" />

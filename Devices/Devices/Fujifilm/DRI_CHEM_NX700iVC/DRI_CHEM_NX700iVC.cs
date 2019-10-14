@@ -26,7 +26,7 @@ namespace Devices.Fujifilm
             DevicesInformation info = new DevicesInformation
             {
                 Num = 4,
-                Brand = "fujifilm",
+                Brand = "富士(fujifilm)",
                 Model = "FUJI DRI-CHEM NX700iVC",
                 Name = "FUJI DRI-CHEM NX700iVC干式生化仪",
                 Remarks = "富士生化",

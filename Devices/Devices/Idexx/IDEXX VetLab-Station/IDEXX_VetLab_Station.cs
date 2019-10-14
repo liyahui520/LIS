@@ -43,7 +43,7 @@ namespace Devices.IDEXX
             DevicesInformation info = new DevicesInformation
             {
                 Num = 1,
-                Brand = "IDEXX",
+                Brand = "爱德士(IDEXX)",
                 Model = "IDEXX VetLab-Station",
                 Name = "IDEXX 工作站",
                 Remarks = "IDEXX 工作站",

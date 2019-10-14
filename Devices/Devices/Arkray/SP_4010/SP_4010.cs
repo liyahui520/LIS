@@ -4,38 +4,41 @@ using System.Linq;
 using System.Text;
 using System.IO.Ports;
 
-namespace Devices.Fujifilm
+using Devices.Fujifilm;
+using System.Windows.Forms;
+
+namespace Devices.Arkray
 {
-    public class FF_6450 : DevicesBase<FF_6450Config>
+    public class SP_4010 : DevicesBase<FF_6450Config>
     {
-        public FF_6450(string fileName)
+        public SP_4010(string fileName)
             : base(fileName)
         {
-            Protocol = new FF_6450Protocol.SeriaProtocol();
-            Protocol.Init(this);
+            //Protocol =null;
+            //Protocol.Init(this);
         }
 
         protected override DevicesInformation DefaultInfo()
         {
             DevicesInformation info = new DevicesInformation
             {
-                Num = 5,
-                Brand = "富士(fujifilm)",
-                Model = "FUJI FF-6450",
-                Name = "全自动血细胞分析仪 FF-6450",
-                Remarks = "富士全自动血细胞分析仪",
-                Code = "FUJI_FF_6450",
-                Url = "http://www.fujifilm.com.cn/products/medical/dri_chem/ff6450/",
-                ImagePath = "ff_6450.png",
+                Num =11,
+                Brand = "爱科来(Arkray)",
+                Model = "PocketChem UA PU-4010",
+                Name = "小型尿液分析仪PocketChem UA PU-4010",
+                Remarks = "小型尿液分析仪",
+                Code = "PocketChem_UA_PU_4010",
+                Url = "http://www.arkray.cn/chinese/products/laboratory/analyzers/pu-4010.html",
+               
             };
+            info.ImagePath = info.Code + ".jpg";
             return info;
         }
-
-        public override System.Windows.Forms.DialogResult ShowConfigForm()
+        public override DialogResult ShowConfigForm()
         {
-            UCFF_6450Config uc = new UCFF_6450Config(this);
-            return uc.ShowForm().ShowDialog();
+            return DialogResult.OK;
         }
+
         protected override Config DefaultConfig()
         {
             FF_6450Config config = new FF_6450Config();
@@ -183,5 +186,7 @@ namespace Devices.Fujifilm
             config.ResultConfig.Add(horse);
             return config;
         }
+
+
     }
 }

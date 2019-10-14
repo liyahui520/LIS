@@ -29,7 +29,7 @@ namespace Devices.Abaxis
             DevicesInformation info = new DevicesInformation
             {
                 Num = 6,
-                Brand = "Abaxis",
+                Brand = "爱倍思(Abaxis)",
                 Model = "Abaxis Vetscan-VS2",
                 Name = "爱倍思 VS2生化分析仪",
                 Remarks = "爱倍思 VS2生化分析仪",
