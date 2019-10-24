@@ -14,7 +14,7 @@ namespace Devices
         void Print(List<Result> result,string PrinterName);
         void Preview(List<Result> result,string PrinterName);
 
-        PrintInfo PrintInfo { get;}
+        PrintInfo PrintInfo { get; set; }
     }
 
 
