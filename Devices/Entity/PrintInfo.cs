@@ -12,6 +12,11 @@ namespace Devices
 
         public PrintInfo()
         {
+
+        }
+
+        public PrintInfo(bool isDef)
+        {
             Author = "咸菜";
             Name = "基础打印";
             Describe = "基础打印";
